@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_bottom_sheet"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_drag_handle" />
+
+
+
+    <TextView
+        android:id="@+id/tv_sort_by"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="@string/sort_by"
+        android:gravity="center"
+        android:textColor="@color/primaryBlack"
+        android:textAlignment="center"
+        android:textSize="16sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        app:strokeColor="@color/tertiaryViolet600"
+        app:strokeWidth="1dp"
+        app:cornerRadius="0dp"
+        android:backgroundTint="@color/white"
+        android:drawableEnd="@drawable/ic_calendar"
+        android:fontFamily="@font/inter_medium"
+        android:gravity="center"
+        android:paddingHorizontal="8dp"
+        android:text="@string/date_from_to"
+        android:textColor="@color/primaryBlack"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@drawable/bg_sort"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="16dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:textSize="14sp"
+            android:textColor="@color/primaryBlack"
+            android:text="@string/potentially_dangerous"/>
+    <Spinner
+        android:id="@+id/spinner_filter"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="40dp" />
+</LinearLayout>
+
+</LinearLayout>

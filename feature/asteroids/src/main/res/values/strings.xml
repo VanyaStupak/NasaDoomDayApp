@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sort_by">Sort by</string>
+    <string name="date_from_to">Date from - to</string>
+    <string name="potentially_dangerous">Potentially dangerous</string>
+</resources>

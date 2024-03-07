@@ -1,6 +1,8 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.org.jetbrains.kotlin)
+    alias(libs.plugins.com.google.dagger.hilt.android)
+    kotlin("kapt")
 }
 
 android {
@@ -36,12 +38,21 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:ui"))
+    implementation(project(":core:platform"))
+    implementation(project(":core:navigation"))
+    implementation(project(":feature:host"))
+    implementation(project(":feature:asteroids"))
+    implementation(project(":feature:favourites"))
+    implementation(project(":feature:details"))
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    implementation(libs.core.ktx)
+    implementation(libs.appcompat)
+    implementation(libs.android.material)
+    implementation(libs.constraintlayout)
+    implementation(libs.dagger.hilt.android)
+    kapt(libs.com.google.dagger.hilt.compiler)
+    kapt(libs.androidx.hilt.compiler)
+
 }

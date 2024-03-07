@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Stupak Ivan</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="asteroids">Asteroids</string>
+    <string name="favourites">Favourites</string>
+    <string name="radius">Radius:</string>
+    <string name="lose_approach_data">Сlose approach data:</string>
+    <string name="orbiting_body">Orbiting body:</string>
+    <string name="potentially_dangerous">Potentially dangerous:</string>
+    <string name="absolute_magnitude">Absolute magnitude:</string>
+    <string name="relative_velocity">Relative velocity:</string>
+    <string name="sentry_object">Sentry object:</string>
+    <string name="miss_distance">Miss distance</string>
+    <string name="astronomical">Astronomical:</string>
+    <string name="lunar">Lunar:</string>
+    <string name="kilometers">Kilometers:</string>
+    <string name="miles">Miles:</string>
+    <string name="estimated_diameter">Estimated diameter:</string>
+    <string name="details">Details</string>
+    <string name="add_to_favourites">Add to favourites</string>
+    <string name="remove_from_favourites">Remove from favourites</string>
+    <string name="date">Date</string>
+    <string name="yyyy_mm_dd">YYYY.MM.DD</string>
+
+    <string-array name="filter_options">
+        <item>All</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+</resources>

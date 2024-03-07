@@ -1,0 +1,34 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.StupakIvan" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:textColor">@color/primaryBlack</item>
+
+    </style>
+
+    <style name="Theme.StupakIvan" parent="Base.Theme.StupakIvan" />
+
+    <style name="BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:textSize">12sp</item>
+        <item name="itemTextColor">@color/sel_bottom_nav_color</item>
+        <item name="itemTextAppearanceActiveBoldEnabled">false</item>
+    </style>
+
+    <style name="ActiveIndicatorStyle" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/transparent</item>
+    </style>
+
+    <style name="MyFilledBoxTextInputLayout" parent="@style/Widget.Material3.TextInputLayout.FilledBox">
+        <item name="android:textColorHint">@color/secondaryGray600</item>
+        <item name="boxStrokeErrorColor">@color/secondaryRed</item>
+        <item name="boxStrokeColor">@color/secondaryGray200</item>
+    </style>
+
+    <style name="ThemeOverlay.App.MaterialCalendar" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="colorPrimary">@color/secondaryBlue900</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+</resources>
