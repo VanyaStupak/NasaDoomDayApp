@@ -9,6 +9,7 @@ import androidx.room.withTransaction
 
 import dev.stupak.database.AsteroidsDB
 import dev.stupak.database.model.AsteroidsDBModel
+import dev.stupak.network.exceptions.UnknownApiException
 
 import dev.stupak.source.AsteroidsNetSource
 import dev.stupak.source.model.toAsteroidsDBModel
@@ -77,8 +78,8 @@ class AsteroidsRemoteMediator(
             MediatorResult.Success(
                 endOfPaginationReached = asteroidList.isEmpty()
             )
-        } catch (exception: Exception) {
-            MediatorResult.Error(exception)
+        } catch (exception: UnknownApiException) {
+            MediatorResult.Success(endOfPaginationReached = true)
         }
     }
 

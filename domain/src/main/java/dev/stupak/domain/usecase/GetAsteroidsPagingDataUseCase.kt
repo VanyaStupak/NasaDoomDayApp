@@ -12,7 +12,9 @@ import dev.stupak.domain.model.AsteroidsDomainModel
 import dev.stupak.domain.model.toAsteroidsDomainModel
 import dev.stupak.paging.AsteroidsRemoteMediator
 import dev.stupak.repository.model.toAsteroidsRepositoryModel
+import dev.stupak.source.AsteroidsDBSource
 import dev.stupak.source.AsteroidsNetSource
+import dev.stupak.source.FavouritesDBSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -22,6 +24,7 @@ import javax.inject.Inject
 
 class GetAsteroidsPagingDataUseCase @Inject constructor(
     private val asteroidsNetSource: AsteroidsNetSource,
+    private val asteroidsDBSource: AsteroidsDBSource,
     private val asteroidsDB: AsteroidsDB
 ) {
 
@@ -38,7 +41,7 @@ class GetAsteroidsPagingDataUseCase @Inject constructor(
                     endDate,
                     isPotentiallyDangerous
                 ),
-                pagingSourceFactory = { asteroidsDB.getAsteroidsDao().getAllAsteroids() }
+                pagingSourceFactory = { asteroidsDBSource.getAsteroidsList() }
             ).flow
                 .map { pagingData ->
                     pagingData.map {

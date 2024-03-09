@@ -21,6 +21,7 @@
     <string name="remove_from_favourites">Remove from favourites</string>
     <string name="date">Date</string>
     <string name="yyyy_mm_dd">YYYY.MM.DD</string>
+    <string name="ceres_950_km">Ceres - 950 km</string>
 
     <string-array name="filter_options">
         <item>All</item>

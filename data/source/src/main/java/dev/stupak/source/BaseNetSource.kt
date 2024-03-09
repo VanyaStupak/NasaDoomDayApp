@@ -1,6 +1,5 @@
 package dev.stupak.source
 
-import android.util.Log
 import dev.stupak.network.exceptions.ApiException
 import dev.stupak.network.exceptions.InternalServerApiException
 import dev.stupak.network.exceptions.NotFoundApiException
@@ -24,7 +23,6 @@ interface BaseNetSource {
             try {
                 call()
             } catch (ex: Exception) {
-                Log.d("wegqwgqerg",ex.stackTraceToString())
                 when (ex) {
                     is HttpException -> {
                         when (ex.code()) {

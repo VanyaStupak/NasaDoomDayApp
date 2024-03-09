@@ -16,6 +16,7 @@ com-airbnb-android-lottie = "6.3.0"
 androidx-work-runtime-ktx = "2.9.0"
 com-github-kirich1409-viewbindingpropertydelegate = "1.5.9"
 dagger-hilt = "2.50"
+mpandroidchart = "v3.1.0"
 com-google-accompanist-permissions = "0.34.0"
 com-google-dagger-hilt-android = "2.50"
 com-google-dagger-hilt-compiler = "2.50"
@@ -42,6 +43,7 @@ android-material = { group = "com.google.android.material", name = "material", v
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
 junit = { module = "junit:junit", version.ref = "junit-junit" }
+mpandroidchart = { group = "com.github.PhilJay", name = "MPAndroidChart", version.ref = "mpandroidchart" }
 navigation-safe-args-gradle-plugin = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "navigationSafeArgsGradlePlugin" }
 navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "androidx-navigation-fragment-ktx" }
 navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "androidx-navigation-ui-ktx" }

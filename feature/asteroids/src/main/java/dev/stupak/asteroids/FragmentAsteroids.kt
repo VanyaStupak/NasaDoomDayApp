@@ -43,8 +43,8 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
     override fun configureUi(savedInstanceState: Bundle?) {
         val lifecycleOwner = viewLifecycleOwner.lifecycle
         adapter =
-            AsteroidsAdapter {asteroidId ->
-                navigateToFlow(null,false,"asteroids://app/$asteroidId/asteroids")
+            AsteroidsAdapter { asteroidId ->
+                navigateToFlow(null, false, "asteroids://app/$asteroidId/asteroids")
             }
 
         binding.apply {
@@ -52,7 +52,7 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
             rvAsteroids.adapter = adapter
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.assetsListStateFlow.collect { asteroidList->
+            viewModel.assetsListStateFlow.collect { asteroidList ->
                 adapter.submitData(lifecycleOwner, asteroidList)
             }
         }
@@ -65,20 +65,34 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
                 }
             }
         }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.filterStateFlow.collect { filterState ->
+                binding.apply {
+                    if (filterState.startDateString != null && filterState.endDateString != null) {
+                        tvDate.text =
+                            "${filterState.startDateString} - ${filterState.endDateString}"
+                        tvClear.visibility = filterState.clearButtonVisibility
+                    }
+                }
+            }
+        }
+
         configureButtons()
     }
 
-    private fun configureButtons(){
+    private fun configureButtons() {
         with(binding) {
             btnFilter.setOnClickListener {
-                   showSortBottomSheet()
+                showSortBottomSheet()
             }
             tvClear.setOnClickListener {
-                viewModel.setSort(null,null, null)
+                viewModel.setSort(null, null, null)
                 rvAsteroids.scrollToPosition(0)
                 selectedFilter = 0
                 tvDate.text = ""
                 tvClear.visibility = View.GONE
+                viewModel.setFilterState(null, null, View.GONE)
             }
         }
 
@@ -91,7 +105,7 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun showDatePicker(isPotentiallyDangerous: Boolean?){
+    private fun showDatePicker(isPotentiallyDangerous: Boolean?) {
         val builder = MaterialDatePicker.Builder.dateRangePicker()
         val materialDateRangePicker = builder
             .setTextInputFormat(SimpleDateFormat(DATE_PATTERN, Locale.getDefault()))
@@ -114,10 +128,13 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
                 SimpleDateFormat(DATE_PATTERN, Locale.getDefault()).format(endCalendar.time)
             endDate = convertStringToDate(endDateString)
 
-            viewModel.setSort(convertStringToDate(startDateString),convertStringToDate(endDateString), isPotentiallyDangerous = isPotentiallyDangerous)
+            viewModel.setSort(
+                convertStringToDate(startDateString),
+                convertStringToDate(endDateString),
+                isPotentiallyDangerous = isPotentiallyDangerous
+            )
             binding.apply {
-                tvDate.text = "$startDateString - $endDateString"
-                tvClear.visibility = View.VISIBLE
+                viewModel.setFilterState(startDateString, endDateString, View.VISIBLE)
                 rvAsteroids.scrollToPosition(0)
             }
         }
@@ -134,7 +151,7 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
         val dialog = BottomSheetDialog(requireContext())
         dialog.setContentView(binding.root)
         dialog.show()
-        var isPotentiallyDangerous:Boolean? = null
+        var isPotentiallyDangerous: Boolean? = null
         val adapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(
             requireContext(),
             dev.stupak.ui.R.array.filter_options,
@@ -144,29 +161,36 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
         binding.spinnerFilter.adapter = adapter
 
         binding.spinnerFilter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                when(parent?.getItemAtPosition(position).toString()){
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                when (parent?.getItemAtPosition(position).toString()) {
                     "Yes" -> {
-                        if(selectedFilter != 1) {
+                        if (selectedFilter != 1) {
                             viewModel.setSort(startDate, endDate, true)
                         }
                         fragmentBinding.tvClear.visibility = View.VISIBLE
                         selectedFilter = 1
                         isPotentiallyDangerous = true
                     }
+
                     "No" -> {
-                        if(selectedFilter != 2) {
+                        if (selectedFilter != 2) {
                             viewModel.setSort(startDate, endDate, false)
                         }
                         fragmentBinding.tvClear.visibility = View.VISIBLE
                         selectedFilter = 2
                         isPotentiallyDangerous = false
                     }
+
                     "All" -> {
-                        if(selectedFilter != 0) {
+                        if (selectedFilter != 0) {
                             viewModel.setSort(startDate, endDate, null)
                         }
-                        if(fragmentBinding.tvDate.text.isNullOrEmpty()){
+                        if (fragmentBinding.tvDate.text.isNullOrEmpty()) {
                             fragmentBinding.tvClear.visibility = View.GONE
                         }
                         selectedFilter = 0
@@ -179,13 +203,13 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
 
             }
         }
-        binding.btnDate.setOnClickListener{
+        binding.btnDate.setOnClickListener {
             showDatePicker(isPotentiallyDangerous)
         }
         binding.spinnerFilter.setSelection(selectedFilter)
     }
 
-    companion object{
+    companion object {
         private const val DATE_PATTERN = "yyyy-MM-dd"
     }
 

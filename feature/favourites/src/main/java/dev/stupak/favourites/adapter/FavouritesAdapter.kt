@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import dev.stupak.favourites.databinding.ItemFavouritesBinding
 import dev.stupak.favourites.model.FavouritesUIModel
+import dev.stupak.ui.ext.removeBrackets
 
 class FavouritesAdapter(
     private var asteroids: List<FavouritesUIModel>,
@@ -38,7 +39,7 @@ class FavouritesAdapter(
     ) {
         val asteroid = asteroids[position]
         holder.apply {
-            tvName.text = asteroid.name
+            tvName.text = asteroid.name.removeBrackets()
             val minDiameterKm = String.format("%.3f", asteroid.minDiameterKm)
             val maxDiameterKm = String.format("%.3f", asteroid.maxDiameterKm)
             tvDiameter.text = "$minDiameterKm - $maxDiameterKm km"

@@ -38,6 +38,7 @@ dependencies {
     implementation(project(":data:repository"))
     implementation(project(":data:database"))
     implementation(project(":data:paging"))
+    implementation(project(":data:network"))
     implementation(project(":data:source"))
     implementation(project(":data:local"))
     implementation(libs.dagger.hilt.android)

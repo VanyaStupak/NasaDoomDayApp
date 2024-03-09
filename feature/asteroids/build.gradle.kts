@@ -42,6 +42,7 @@ dependencies {
     implementation(project(":core:ui"))
     implementation(project(":core:platform"))
     implementation(project(":core:navigation"))
+    implementation(project(":data:network"))
     implementation(project(":domain"))
     implementation(libs.dagger.hilt.android)
     kapt(libs.com.google.dagger.hilt.compiler)

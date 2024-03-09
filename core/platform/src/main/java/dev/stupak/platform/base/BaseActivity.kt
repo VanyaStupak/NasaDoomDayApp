@@ -1,28 +1,40 @@
 package dev.stupak.platform.base
 
 import android.content.Context
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ReportFragment.Companion.reportFragment
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
 import dev.stupak.navigation.navigator.NavigationFlow
 import dev.stupak.navigation.navigator.Navigator
 import dev.stupak.navigation.navigator.ToFlowNavigable
-import dev.stupak.platform.R
+import dev.stupak.platform.receiver.MyBroadcastReceiver
+import java.util.Locale
 
 
 abstract class BaseActivity(
     @LayoutRes layout: Int,
 ) : AppCompatActivity(layout), ToFlowNavigable {
 
+    private val networkStateReceiver = MyBroadcastReceiver()
     val navigator: Navigator = Navigator()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val locale = Locale("en", "US")
+        Locale.setDefault(locale)
+
+        val configuration = resources.configuration
+        configuration.setLocale(locale)
+        resources.updateConfiguration(configuration, resources.displayMetrics)
         configureUi()
+
+        registerReceiver(
+            networkStateReceiver,
+            IntentFilter().apply { addAction(ConnectivityManager.CONNECTIVITY_ACTION) },
+        )
     }
 
     override fun navigateToFlow(

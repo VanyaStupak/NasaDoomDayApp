@@ -35,6 +35,7 @@ android {
 
 dependencies {
     implementation(project(":data:source"))
+    implementation(project(":data:network"))
     implementation(project(":data:database"))
 
     implementation(libs.room.paging)

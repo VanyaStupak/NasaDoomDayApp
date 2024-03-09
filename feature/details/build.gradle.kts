@@ -47,6 +47,7 @@ dependencies {
     kapt(libs.com.google.dagger.hilt.compiler)
     kapt(libs.androidx.hilt.compiler)
     implementation(libs.core.ktx)
+    implementation(libs.mpandroidchart)
     implementation(libs.appcompat)
     implementation(libs.android.material)
     implementation(libs.navigation.fragment.ktx)

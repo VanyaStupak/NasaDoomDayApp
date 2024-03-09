@@ -1,5 +1,7 @@
 package dev.stupak.source.impl
 
+import android.util.Log
+import dev.stupak.network.exceptions.UnknownApiException
 import dev.stupak.network.service.AsteroidsApiService
 import dev.stupak.source.AsteroidsNetSource
 import dev.stupak.source.model.AsteroidsSourceNetModel
@@ -17,5 +19,4 @@ constructor(
         apiCall {
             asteroidService.getAsteroids(startDate, endDate)
         }.nearEarthObjects.values.flatten().map { it.toAsteroidsSourceNetModel() }
-
 }
