@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/fragment_host"
         android:name="dev.stupak.host.FragmentHost"
-        android:label="fragment_1"
+        android:label="fragment_host"
         tools:layout="@layout/fragment_host">
     </fragment>
 

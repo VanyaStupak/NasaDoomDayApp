@@ -42,6 +42,7 @@ dependencies {
     implementation(project(":core:platform"))
     implementation(project(":core:ui"))
     implementation(project(":feature:favourites"))
+    implementation(project(":feature:comparison"))
     implementation(project(":feature:asteroids"))
     implementation(project(":core:navigation"))
     implementation(project(":feature:details"))

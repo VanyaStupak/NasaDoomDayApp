@@ -31,7 +31,8 @@ class HostActivity : BaseActivity(R.layout.activity_host) {
         flow: NavigationFlow?,
         clearBackStackEntry: Boolean,
         deeplink: String?,
+        argument: String?
     ) {
-        navigator.navigateToFlow(flow, clearBackStackEntry, deeplink)
+        navigator.navigateToFlow(flow, clearBackStackEntry, deeplink, argument)
     }
 }

@@ -87,7 +87,6 @@ class AsteroidsAdapter(
         val item = getItem(position)
         holder.itemView.setOnClickListener {
             if (item != null) {
-                Log.d("AsteroidsAdapter", "Clicked item with ID: ${item.id}")
                 itemClickListener.invoke(item.id)
             }
         }

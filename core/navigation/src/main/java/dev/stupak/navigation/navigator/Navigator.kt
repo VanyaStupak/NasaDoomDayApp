@@ -1,8 +1,11 @@
 package dev.stupak.navigation.navigator
 
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
+import androidx.navigation.navArgument
 import dev.stupak.navigation.NavGraphDirections
 
 class Navigator {
@@ -12,6 +15,7 @@ class Navigator {
         navigationFlow: NavigationFlow?,
         clearBackStackEntry: Boolean = false,
         deeplink: String? = null,
+        argument: String? = null
     ) {
         with(navController) {
             if (clearBackStackEntry) {
@@ -19,8 +23,9 @@ class Navigator {
             }
             if (deeplink.isNullOrEmpty()) {
                 when (navigationFlow) {
-                    is NavigationFlow.HostFlow-> navigateToHost()
-                    is NavigationFlow.DetailsFlow-> navigateToDetails()
+                    is NavigationFlow.ComparisonFlow -> navigateToComparison(argument ?: "")
+                    is NavigationFlow.HostFlow -> navigateToHost()
+                    is NavigationFlow.DetailsFlow -> navigateToDetails()
                     else -> {
 
                     }
@@ -40,6 +45,11 @@ class Navigator {
         navController.navigate(NavGraphDirections.actionGlobalDetailsFlow())
     }
 
+    internal fun navigateToComparison(asteroidId: String) {
+        navController.navigate(NavGraphDirections.actionGlobalComparisonFlow().apply {
+            arguments.putString("id", asteroidId)
+        })
+    }
 
 
 }

@@ -32,6 +32,7 @@ firebase-analytics = "21.5.1"
 firebase-config = "21.6.2"
 firebase-messaging = "23.4.1"
 junit = "1.1.5"
+view-pager = "1.0.0"
 espresso-core = "3.5.1"
 
 
@@ -65,6 +66,7 @@ room-compiler= {group = "androidx.room", name = "room-compiler", version.ref = "
 datastore = {group = "androidx.datastore", name = "datastore-preferences", version.ref= "datastore"}
 paging = {group = "androidx.paging", name = "paging-runtime",version.ref = "paging"}
 room-paging = {group = "androidx.room", name = "room-paging", version.ref = "room" }
+viewpager2 = {group = "androidx.viewpager2", name = "viewpager2", version.ref = "view-pager"}
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebase-analytics" }
 firebase-config = { group = "com.google.firebase", name = "firebase-config", version.ref = "firebase-config" }
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebase-messaging" }

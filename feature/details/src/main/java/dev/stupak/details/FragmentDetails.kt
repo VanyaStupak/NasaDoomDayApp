@@ -37,6 +37,7 @@ import dev.stupak.navigation.navigator.NavigationFlow
 import dev.stupak.platform.base.BaseFragment
 import dev.stupak.ui.ext.removeBrackets
 import dev.stupak.ui.ext.replaceMonthWithNumber
+import dev.stupak.ui.ext.showNothingToCompareSnackbar
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -52,7 +53,6 @@ class FragmentDetails : BaseFragment(R.layout.fragment_details) {
     override fun configureUi(savedInstanceState: Bundle?) {
         configureButtons()
         observeDetailsData()
-
         scaleGestureDetector = ScaleGestureDetector(requireContext(), ScaleListener())
 
         binding.linearAsteroidsPictures.setOnTouchListener { _, event ->
@@ -65,14 +65,32 @@ class FragmentDetails : BaseFragment(R.layout.fragment_details) {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun configureButtons() {
         val asteroidId: String? = arguments?.getString(ASTEROID_ID_KEY)
+        val fromFragment: String? = arguments?.getString(FROM_FRAGMENT_KEY)
         with(binding) {
             viewModel.getFavouriteAsteroid(asteroidId)
             ctToolbar.onBackButtonClickListener =
                 View.OnClickListener {
-                    findNavController().popBackStack()
+                    if(fromFragment == "comparison"){
+                        navigateToFlow(NavigationFlow.HostFlow, true)
+                    }else {
+                        findNavController().popBackStack()
+                    }
                 }
+
+           btnCompare.setOnClickListener {
+               lifecycleScope.launch {
+                   if (viewModel.getFavouritesSize() == 1){
+                       view?.showNothingToCompareSnackbar(requireView())
+                   } else{
+                       navigateToFlow(NavigationFlow.ComparisonFlow, false, null, asteroidId)
+                   }
+
+               }
+            }
+
             btnAddToFavourites.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
+                    btnCompare.visibility = View.VISIBLE
                     tvName.setCompoundDrawablesWithIntrinsicBounds(
                         0, 0,
                         dev.stupak.ui.R.drawable.ic_heart_full, 0
@@ -81,6 +99,7 @@ class FragmentDetails : BaseFragment(R.layout.fragment_details) {
                         viewModel.addAsteroidToFavourites(asteroidId)
                     }
                 } else {
+                    btnCompare.visibility = View.GONE
                     tvName.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
                     if (viewModel.detailsData.value.isInFavourite) {
                         viewModel.removeAsteroidFromFavourites(asteroidId)
@@ -88,18 +107,16 @@ class FragmentDetails : BaseFragment(R.layout.fragment_details) {
                 }
             }
 
-            btnShowComparison.setOnCheckedChangeListener { _, isChecked ->
+            btnShowCharacteristics.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
-                    cardAsteroidsSize.visibility = View.VISIBLE
-                    cardSizeGraph.visibility = View.VISIBLE
-                    btnShowComparison.setCompoundDrawablesWithIntrinsicBounds(
+                    cardAsteroidsCharacteristics.visibility = View.VISIBLE
+                    btnShowCharacteristics.setCompoundDrawablesWithIntrinsicBounds(
                         0, 0,
                         dev.stupak.ui.R.drawable.ic_arrow_up, 0
                     )
                 } else {
-                    cardAsteroidsSize.visibility = View.GONE
-                    cardSizeGraph.visibility = View.GONE
-                    btnShowComparison.setCompoundDrawablesWithIntrinsicBounds(
+                    cardAsteroidsCharacteristics.visibility = View.GONE
+                    btnShowCharacteristics.setCompoundDrawablesWithIntrinsicBounds(
                         0, 0,
                         dev.stupak.ui.R.drawable.ic_arrow_down, 0
                     )
@@ -171,14 +188,9 @@ class FragmentDetails : BaseFragment(R.layout.fragment_details) {
                             "No"
                         }
 
-                        tvDistanceAstronomical.text =
-                            String.format("%.2f au", asteroid.missDistanceAstronomical.toDouble())
-                        tvDistanceLunar.text =
-                            String.format("%.2f LD", asteroid.missDistanceLunar.toDouble())
                         tvDistanceKilometers.text =
                             String.format("%.2f km", asteroid.missDistanceKm.toDouble())
-                        tvDistanceMiles.text =
-                            String.format("%.2f mi", asteroid.missDistanceMiles.toDouble())
+
                         ctToolbar.onInfoButtonClickListener =
                             View.OnClickListener {
                                 val url = asteroid.nasaJplUrl
@@ -186,7 +198,6 @@ class FragmentDetails : BaseFragment(R.layout.fragment_details) {
                                 startActivity(intent)
                             }
                         val missDistanceFromEarth = asteroid.missDistanceAstronomical.toFloat() + 1f
-                        Log.d("erobkewotkbwrt", missDistanceFromEarth.toString())
                         val list = listOf(
                             Entry(-1f, 1f),
                             Entry(1f, 1f),

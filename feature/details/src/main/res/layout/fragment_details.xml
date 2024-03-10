@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <dev.stupak.ui.toolbar.CustomDetailsToolbar
         android:id="@+id/ct_toolbar"
@@ -16,550 +15,451 @@
         app:ct_btn_info="@drawable/ic_info"
         app:ct_btn_info_visibility="0"
         app:ct_txt_color="@color/primaryBlack"
-        app:ct_txt_title="Details"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        app:ct_txt_title="Details" />
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:paddingBottom="2dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="14dp"
         app:layout_constraintTop_toBottomOf="@id/ct_toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        app:cardElevation="2dp"
-        app:cardCornerRadius="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeWidth="0dp">
-
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_medium"
-                android:textSize="20sp"
-                tools:text="230549 (2003 BH)" />
-
-            <TextView
-                android:id="@+id/tv_unique_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/inter"
-                android:textColor="@color/secondaryGray700"
-                android:textSize="14sp"
-                tools:text="id: 2490636" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter"
-                        android:text="@string/estimated_diameter"
-                        android:textColor="@color/secondaryGray800"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/inter"
-                        android:gravity="end"
-                        android:text="@string/orbiting_body"
-                        android:textColor="@color/secondaryGray800"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tv_diameter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter"
-                        android:textSize="20sp"
-                        tools:text="0.185 - 0.423 km" />
-
-                    <TextView
-                        android:id="@+id/tv_orbiting_body"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/inter"
-                        android:gravity="end"
-                        android:textSize="20sp"
-                        tools:text="Earth" />
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="4dp"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_earth" />
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter"
-                        android:text="@string/lose_approach_data"
-                        android:textColor="@color/secondaryGray800"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/inter"
-                        android:gravity="end"
-                        android:text="@string/potentially_dangerous"
-                        android:textColor="@color/secondaryGray800"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tv_close_approach_data"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter"
-                        android:textSize="20sp"
-                        tools:text="2024-10-10 13:56" />
-
-                    <TextView
-                        android:id="@+id/tv_potentially_dangerous"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/inter"
-                        android:gravity="end"
-                        android:textSize="20sp"
-                        tools:text="Yes" />
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <LinearLayout
-        android:id="@+id/linear_info"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:elevation="1dp"
-        android:orientation="horizontal"
-        android:paddingBottom="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/card_info"
-        app:layout_constraintStart_toStartOf="@+id/card_info"
-        app:layout_constraintTop_toBottomOf="@id/card_info">
-
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="2dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_medium"
+                        android:textSize="20sp"
+                        tools:text="230549 (2003 BH)" />
+
+                    <TextView
+                        android:id="@+id/tv_unique_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/inter"
+                        android:textColor="@color/secondaryGray700"
+                        android:textSize="14sp"
+                        tools:text="id: 2490636" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter"
+                                android:text="@string/estimated_diameter"
+                                android:textColor="@color/secondaryGray800"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/inter"
+                                android:gravity="end"
+                                android:text="@string/orbiting_body"
+                                android:textColor="@color/secondaryGray800"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_diameter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter"
+                                android:textSize="20sp"
+                                tools:text="0.185 - 0.423 km" />
+
+                            <TextView
+                                android:id="@+id/tv_orbiting_body"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/inter"
+                                android:gravity="end"
+                                android:textSize="20sp"
+                                tools:text="Earth" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="4dp"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/ic_earth" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter"
+                                android:text="@string/lose_approach_data"
+                                android:textColor="@color/secondaryGray800"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/inter"
+                                android:gravity="end"
+                                android:text="@string/potentially_dangerous"
+                                android:textColor="@color/secondaryGray800"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_close_approach_data"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter"
+                                android:textSize="20sp"
+                                tools:text="2024-10-10 13:56" />
+
+                            <TextView
+                                android:id="@+id/tv_potentially_dangerous"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/inter"
+                                android:gravity="end"
+                                android:textSize="20sp"
+                                tools:text="Yes" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_additional_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="2dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
                 app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
                 app:strokeWidth="0dp">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginTop="2dp"
                     android:background="@color/white"
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter"
-                        android:text="@string/relative_velocity"
-                        android:textColor="@color/secondaryGray800"
-                        android:textSize="12sp" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/tv_relative_velocity"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/inter"
+                            android:text="@string/relative_velocity"
+                            android:textColor="@color/secondaryGray800"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter"
+                            android:text="@string/absolute_magnitude"
+                            android:textColor="@color/secondaryGray800"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter"
-                        android:textSize="18sp"
-                        tools:text="58934.930 km/h" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/tv_relative_velocity"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/inter"
+                            android:textSize="18sp"
+                            tools:text="58934.930 km/h" />
+
+                        <TextView
+                            android:id="@+id/tv_absolute_magnitude"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter"
+                            android:textSize="18sp"
+                            tools:text="20.71" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:fontFamily="@font/inter"
-                        android:text="@string/absolute_magnitude"
-                        android:textColor="@color/secondaryGray800"
-                        android:textSize="12sp" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/tv_absolute_magnitude"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/inter"
+                            android:text="@string/miss_distance"
+                            android:textColor="@color/secondaryGray800"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter"
+                            android:text="@string/sentry_object"
+                            android:textColor="@color/secondaryGray800"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter"
-                        android:textSize="18sp"
-                        tools:text="20.71" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/tv_distance_kilometers"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/inter"
+                            android:textSize="18sp"
+                            tools:text="55670341.55 km" />
+
+
+                        <TextView
+                            android:id="@+id/tv_sentry_object"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter"
+                            android:textSize="18sp"
+                            tools:text="No" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.appcompat.widget.AppCompatToggleButton
+                android:id="@+id/btn_show_characteristics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/sel_comparison_button_states"
+                android:drawableEnd="@drawable/ic_arrow_down"
+                android:elevation="2dp"
+                android:paddingHorizontal="24dp"
+                android:fontFamily="@font/inter_medium"
+                android:gravity="center"
+                android:textColor="@color/sel_comparison_button_text_color"
+                android:textOff="Show characteristics"
+                android:textOn="Hide characterisctics" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_asteroids_characteristics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="4dp"
+                app:cardBackgroundColor="@color/secondaryGray100"
+                android:visibility="gone"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/tertiaryViolet600"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_comparison_button_default"
+                        android:orientation="vertical">
+                    <LinearLayout
+                        android:id="@+id/linear_asteroids_pictures"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iv_asteroid"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_asteroid_default" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iv_ceres"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="end"
+                            android:layout_weight="1"
+                            android:scaleType="fitEnd"
+                            android:src="@drawable/ic_asteroid_round" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_asteroid_diameter"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/inter_medium"
+                            android:gravity="start"
+                            tools:text="3534534 - 0.043 km" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_medium"
+                            android:gravity="center"
+                            android:text="@string/ceres_950_km" />
+                    </LinearLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:fontFamily="@font/inter"
-                        android:text="@string/sentry_object"
-                        android:textColor="@color/secondaryGray800"
-                        android:textSize="12sp" />
-
-
-                    <TextView
-                        android:id="@+id/tv_sentry_object"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter"
-                        android:textSize="18sp"
-                        tools:text="No" />
+                        android:background="@drawable/bg_comparison_button_default"
+                        android:orientation="vertical">
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/ch_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
-      <androidx.appcompat.widget.AppCompatToggleButton
-          android:id="@+id/btn_show_comparison"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:elevation="2dp"
-          android:layout_marginStart="2dp"
-          android:background="@drawable/sel_comparison_button_states"
-          android:layout_marginTop="8dp"
-          android:layout_marginBottom="2dp"
-          android:padding="8dp"
-          android:textColor="@color/sel_comparison_button_text_color"
-          android:textOff="Show comparison"
-          android:textOn="Hide comparison"
-          android:drawableEnd="@drawable/ic_arrow_down"
-          />
-
-        </LinearLayout>
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="2dp"
-            android:layout_weight="0.5"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:strokeWidth="0dp">
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="@string/miss_distance"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter"
-                    android:text="@string/astronomical"
-                    android:textColor="@color/secondaryGray800"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/tv_distance_astronomical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter"
-                    android:textSize="18sp"
-                    tools:text="0.37" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter"
-                    android:text="@string/lunar"
-                    android:textColor="@color/secondaryGray800"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/tv_distance_lunar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter"
-                    android:textSize="18sp"
-                    tools:text="144.75" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter"
-                    android:text="@string/kilometers"
-                    android:textColor="@color/secondaryGray800"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/tv_distance_kilometers"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter"
-                    android:textSize="18sp"
-                    tools:text="55670341.55 km" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter"
-                    android:text="@string/miles"
-                    android:textColor="@color/secondaryGray800"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/tv_distance_miles"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter"
-                    android:textSize="18sp"
-                    tools:text="34591946.19 mi" />
-
-
-            </LinearLayout>
-
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_asteroids_size"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="4dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="2dp"
-        app:strokeWidth="1dp"
-        app:strokeColor="@color/tertiaryViolet600"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@id/linear_info"
-        app:layout_constraintStart_toStartOf="@id/linear_info"
-        app:layout_constraintTop_toBottomOf="@id/linear_info">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/linear_asteroids_pictures"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:padding="8dp"
+                android:layout_marginTop="12dp"
+                android:padding="4dp"
+                android:layout_marginHorizontal="12dp"
                 android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/iv_asteroid"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_asteroid_default" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/iv_ceres"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:layout_weight="1"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/ic_asteroid_round" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_asteroid_diameter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/inter_medium"
-                    android:layout_marginStart="8dp"
-                    android:gravity="start"
-                    tools:text="3534534 - 0.043 km"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="@string/ceres_950_km"/>
-            </LinearLayout>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card_size_graph"
-                android:layout_width="match_parent"
-                android:layout_height="224dp"
-                android:layout_margin="16dp"
-                app:cardBackgroundColor="?android:windowBackground"
-                app:cardCornerRadius="8dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="@color/tertiaryViolet600"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/btn_add_to_favourites"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card_asteroids_size">
-
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/ch_line"
-                    android:layout_margin="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </com.google.android.material.card.MaterialCardView>
-
 
             <androidx.appcompat.widget.AppCompatToggleButton
                 android:id="@+id/btn_add_to_favourites"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
+                android:layout_weight="1"
                 android:background="@drawable/sel_button_states"
                 android:elevation="2dp"
-                android:layout_marginBottom="16dp"
-                android:gravity="center"
                 android:fontFamily="@font/inter_medium"
                 android:textColor="@color/sel_add_to_favourites_color"
                 android:textOff="@string/add_to_favourites"
-                android:textOn="@string/remove_from_favourites"
-                app:layout_constraintBottom_toTopOf="@id/btn_compare"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card_size_graph" />
+                android:textOn="@string/remove_from_favourites" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_compare"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="16dp"
-                android:gravity="center"
-                android:elevation="2dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/inter_medium"
-                android:textColor="@color/primaryBlack"
+                android:visibility="gone"
                 android:text="Compare"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_add_to_favourites" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:gravity="center"
+                android:textColor="@color/primaryBlack" />
+
+            </LinearLayout>
+        </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

@@ -9,7 +9,12 @@
 
     <include app:graph="@navigation/host_flow" />
     <include app:graph="@navigation/details_flow" />
+    <include app:graph="@navigation/comparison_flow" />
+    <include app:graph="@navigation/favourites_flow" />
 
+    <action
+        android:id="@+id/action_global_comparison_flow"
+        app:destination="@id/comparison_flow" />
 
     <action
         android:id="@+id/action_global_host_flow"
@@ -18,5 +23,9 @@
     <action
         android:id="@+id/action_global_details_flow"
         app:destination="@id/details_flow" />
+    <action
+        android:id="@+id/action_global_favourites_flow"
+        app:destination="@id/favourites_flow" />
+
 
 </navigation>

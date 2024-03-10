@@ -11,9 +11,12 @@ import dev.stupak.domain.usecase.GetAsteroidByIdUseCase
 import dev.stupak.details.model.AsteroidsDetailsUIModel
 import dev.stupak.details.model.toAsteroidsDetailsUiModel
 import dev.stupak.domain.usecase.GetFavouriteByIdUseCase
+import dev.stupak.domain.usecase.GetFavouritesListUseCase
 import dev.stupak.domain.usecase.RemoveAsteroidFromFavouritesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,7 +27,8 @@ class DetailsViewModel @Inject constructor(
     private val getAsteroidByIdUseCase: GetAsteroidByIdUseCase,
     private val addAsteroidsToFavouritesUseCase: AddAsteroidsToFavouritesUseCase,
     private val removeAsteroidFromFavouritesUseCase: RemoveAsteroidFromFavouritesUseCase,
-    private val getFavouriteByIdUseCase: GetFavouriteByIdUseCase
+    private val getFavouriteByIdUseCase: GetFavouriteByIdUseCase,
+    private val getFavouritesListUseCase: GetFavouritesListUseCase
 ) : ViewModel() {
 
     data class DetailsViewState(
@@ -47,6 +51,10 @@ class DetailsViewModel @Inject constructor(
     private suspend fun getFavourite(asteroidId: String) {
        val favourite = getFavouriteByIdUseCase.invoke(asteroidId)
         _detailsData.update { DetailsViewState(null,favourite != null)}
+    }
+
+    suspend fun getFavouritesSize(): Int {
+        return getFavouritesListUseCase.invoke().first().size
     }
 
     fun getAsteroidInfo(
@@ -86,7 +94,7 @@ class DetailsViewModel @Inject constructor(
         asteroidId: String,
         fromFragment: String?
     ) {
-        val asteroid = if (fromFragment == "favourites"){
+        val asteroid = if (fromFragment == "favourites" || fromFragment == "comparison" ){
             getFavouriteByIdUseCase.invoke(asteroidId)
         } else {
             getAsteroidByIdUseCase.invoke(asteroidId)

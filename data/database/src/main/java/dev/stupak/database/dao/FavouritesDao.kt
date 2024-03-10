@@ -14,7 +14,7 @@ interface FavouritesDao {
     @Query("SELECT * FROM favourites WHERE id=:id")
     suspend fun getAsteroid(id: String): FavouritesDBModel?
 
-    @Query("SELECT * FROM favourites ORDER BY closeApproachDate ASC")
+    @Query("SELECT * FROM favourites")
     fun getAllAsteroids(): Flow<List<FavouritesDBModel>>
 
     @Query("DELETE FROM favourites WHERE id=:id")

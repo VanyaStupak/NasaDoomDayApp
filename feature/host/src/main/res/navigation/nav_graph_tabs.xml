@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/item_favourites"
         android:name="dev.stupak.favourites.FragmentFavourites"
-        android:label="fragment_2"
+        android:label="FavouritesFragment"
         tools:layout="@layout/fragment_favourites" />
 
 </navigation>

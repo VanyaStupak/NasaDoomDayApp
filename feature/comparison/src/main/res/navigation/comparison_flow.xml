@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/fragment_comparison"
+    android:id="@+id/comparison_flow">
+
+    <fragment
+        android:id="@+id/fragment_comparison"
+        android:name="dev.stupak.comparison.FragmentComparison"
+        tools:layout="@layout/fragment_comparison">
+    </fragment>
+</navigation>

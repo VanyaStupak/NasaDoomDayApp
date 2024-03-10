@@ -41,6 +41,7 @@ abstract class BaseActivity(
         flow: NavigationFlow?,
         clearBackStackEntry: Boolean,
         deeplink: String?,
+        argument: String?
     ) {
         try {
             navigator.navigateToFlow(flow, clearBackStackEntry, deeplink)

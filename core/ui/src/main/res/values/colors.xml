@@ -18,6 +18,7 @@
     <color name="secondaryBlue600">#7FA1ED</color>
     <color name="secondaryBlue400">#BFD0F6</color>
     <color name="secondaryBlue900">#5582E7</color>
+    <color name="darkBlue80">#CD202035</color>
     <color name="tertiaryViolet50">#F9F9FD</color>
     <color name="tertiaryViolet100">#F0EFFA</color>
     <color name="tertiaryViolet200">#E1DFF4</color>
