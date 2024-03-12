@@ -1,11 +1,12 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.org.jetbrains.kotlin)
+    alias(libs.plugins.com.google.dagger.hilt.android)
+    kotlin("kapt")
 }
 
 android {
-    namespace = "dev.stupak.ui"
+    namespace = "dev.stupak.onboarding"
     compileSdk = 34
 
     defaultConfig {
@@ -31,17 +32,26 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
+
+    buildFeatures{
         viewBinding = true
     }
 }
 
 dependencies {
+    implementation(project(":core:ui"))
+    implementation(project(":core:platform"))
+    implementation(project(":core:navigation"))
+    implementation(libs.viewpager2)
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.android.material)
-    implementation(libs.core.splashscreen)
+    implementation(libs.dagger.hilt.android)
+    kapt(libs.com.google.dagger.hilt.compiler)
+    kapt(libs.androidx.hilt.compiler)
     implementation(libs.viewbindingpropertydelegate)
-    implementation(libs.navigation.ui.ktx)
     implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
+    implementation(libs.dotsindicator)
+
 }

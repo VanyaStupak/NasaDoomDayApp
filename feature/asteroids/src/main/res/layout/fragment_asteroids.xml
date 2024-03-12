@@ -9,93 +9,85 @@
 
 
     <LinearLayout
-        android:id="@+id/linear_sort"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="4dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:paddingVertical="4dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="1dp"
-            app:strokeWidth="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/inter_medium"
-                    android:text="@string/asteroids"
-                    android:textColor="@color/primaryBlack"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/tv_date"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="4dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:fontFamily="@font/inter"
-                    android:gravity="end"
-                    android:textColor="@color/secondaryGray900"
-                    android:textSize="12sp"
-                    tools:text="2024-12-04 - 2024-12-05" />
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_filter"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginVertical="4dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/bg_round"
-            android:elevation="1dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_filter"
-            tools:visibility="visible" />
-    </LinearLayout>
+    android:id="@+id/tb_asteroids"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
 
     <TextView
-        android:id="@+id/tv_clear"
-        android:clickable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="@string/asteroids"
+        android:textColor="@color/primaryBlack"
+        android:textSize="28sp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:fontFamily="@font/inter"
+            android:textColor="@color/secondaryGray900"
+            android:textSize="12sp"
+            tools:text="2024-12-04 - 2024-12-05" />
+
+        <TextView
+            android:id="@+id/tv_is_dangerous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/inter"
+            android:textColor="@color/secondaryGray900"
+            android:textSize="12sp"
+            tools:text="Potentially dangerous - All" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_filter"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/bg_round"
+        android:elevation="2dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_filter"
+        tools:visibility="visible" />
+</LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:focusable="true"
         android:fontFamily="@font/inter"
         android:gravity="center"
         android:text="Clear filters"
         android:textColor="@color/secondaryRed"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@+id/linear_sort"
+        app:layout_constraintEnd_toEndOf="@+id/tb_asteroids"
         app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="@+id/linear_sort"
-        app:layout_constraintTop_toBottomOf="@+id/linear_sort"
-        android:focusable="true" />
+        app:layout_constraintStart_toStartOf="@+id/tb_asteroids"
+        app:layout_constraintTop_toBottomOf="@+id/tb_asteroids" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_asteroids"
@@ -118,7 +110,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_sort"
+        app:layout_constraintTop_toBottomOf="@id/tb_asteroids"
         app:lottie_autoPlay="false"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/loader" />

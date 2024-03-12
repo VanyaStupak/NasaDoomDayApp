@@ -9,7 +9,6 @@ import androidx.room.withTransaction
 
 import dev.stupak.database.AsteroidsDB
 import dev.stupak.database.model.AsteroidsDBModel
-import dev.stupak.network.exceptions.UnknownApiException
 
 import dev.stupak.source.AsteroidsNetSource
 import dev.stupak.source.model.toAsteroidsDBModel
@@ -51,32 +50,45 @@ class AsteroidsRemoteMediator(
         val currentDate = startDate ?: getCurrentDate()
         val limitDate = calculateDate(currentDate, pageIndex)
         val offsetDate = calculateDate(currentDate, pageIndex + 1)
+        if (limitDate == endDate && !isOneDay) {
+            return MediatorResult.Success(endOfPaginationReached = true)
+        }
         val limit = formatDate(limitDate)
         val offset = formatDate(offsetDate)
         return try {
-            val asteroidList = if (potentiallyDangerous != null)
-            {asteroidsNetSource.getAsteroidList(limit, offset)
-                .sortedBy { it.closeApproachDate }
-                .filter { it.isPotentiallyHazardousAsteroid == potentiallyDangerous }
-            } else{
-                asteroidsNetSource.getAsteroidList(limit, offset)
-                    .sortedBy { it.closeApproachDate }
-            }
+            val asteroidList =
+                if (potentiallyDangerous != null && startDate == null && endDate == null) {
+                    asteroidsNetSource.getAsteroidList(
+                        formatDate(getCurrentDate()),
+                        formatDate(calculateDate(getCurrentDate(), 7))
+                    )
+                        .sortedBy { it.closeApproachDate }
+                        .filter { it.isPotentiallyHazardousAsteroid == potentiallyDangerous }
+                } else if (potentiallyDangerous != null && startDate != null && endDate != null) {
+                    asteroidsNetSource.getAsteroidList(formatDate(startDate), formatDate(endDate))
+                        .sortedBy { it.closeApproachDate }
+                        .filter { it.isPotentiallyHazardousAsteroid == potentiallyDangerous }
+                } else {
+                    asteroidsNetSource.getAsteroidList(limit, offset)
+                        .sortedBy { it.closeApproachDate }
+                }
 
             asteroidsDB.withTransaction {
-                    if (loadType == LoadType.REFRESH) {
-                        asteroidsDB.getAsteroidsDao().deleteAll()
-                    }
-                    asteroidList.forEach {
-                        asteroidsDB.getAsteroidsDao()
-                            .insertAsteroid(it.toAsteroidsDBModel())
-                    }
+                if (loadType == LoadType.REFRESH) {
+                    asteroidsDB.getAsteroidsDao().deleteAll()
+                }
+                asteroidList.forEach {
+                    asteroidsDB.getAsteroidsDao()
+                        .insertAsteroid(it.toAsteroidsDBModel())
+                }
             }
             MediatorResult.Success(
                 endOfPaginationReached = asteroidList.isEmpty()
             )
-        } catch (exception: UnknownApiException) {
-            MediatorResult.Success(endOfPaginationReached = true)
+        } catch (exception: Exception) {
+            MediatorResult.Success(
+                endOfPaginationReached = true
+            )
         }
     }
 

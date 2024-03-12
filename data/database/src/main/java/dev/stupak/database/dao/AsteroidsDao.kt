@@ -18,7 +18,7 @@ interface AsteroidsDao {
     @Query("SELECT * FROM asteroids WHERE id=:id")
     suspend fun getAsteroid(id: String): AsteroidsDBModel
 
-    @Query("SELECT * FROM asteroids ORDER BY closeApproachDate")
+    @Query("SELECT * FROM asteroids")
     fun getAllAsteroids(): PagingSource<Int, AsteroidsDBModel>
 
     @Query("DELETE FROM asteroids")

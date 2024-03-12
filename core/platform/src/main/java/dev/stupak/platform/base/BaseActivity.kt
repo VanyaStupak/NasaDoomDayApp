@@ -6,6 +6,7 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dev.stupak.navigation.navigator.NavigationFlow
 import dev.stupak.navigation.navigator.Navigator
 import dev.stupak.navigation.navigator.ToFlowNavigable
@@ -21,14 +22,9 @@ abstract class BaseActivity(
     val navigator: Navigator = Navigator()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
 
-        val locale = Locale("en", "US")
-        Locale.setDefault(locale)
-
-        val configuration = resources.configuration
-        configuration.setLocale(locale)
-        resources.updateConfiguration(configuration, resources.displayMetrics)
         configureUi()
 
         registerReceiver(
@@ -51,15 +47,17 @@ abstract class BaseActivity(
     }
     fun isFirstRun(): Boolean {
         val sharedPreferences = getPreferences(Context.MODE_PRIVATE)
-        return sharedPreferences.getBoolean("isFirstRun", true)
+        return sharedPreferences.getBoolean(IS_FIRST_RUN, true)
     }
 
     fun setFirstRun(isFirstRun: Boolean) {
         val sharedPreferences = getPreferences(Context.MODE_PRIVATE)
-        sharedPreferences.edit().putBoolean("isFirstRun", isFirstRun).apply()
+        sharedPreferences.edit().putBoolean(IS_FIRST_RUN, isFirstRun).apply()
     }
 
     protected open fun configureUi() = Unit
 
-
+    companion object{
+        private const val IS_FIRST_RUN = "isFirstRun"
+    }
 }

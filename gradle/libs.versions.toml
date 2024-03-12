@@ -34,6 +34,7 @@ junit = "1.1.5"
 view-pager = "1.0.0"
 espresso-core = "3.5.1"
 lottie = "6.3.0"
+dotsindicator = "5.0"
 
 
 [libraries]
@@ -72,6 +73,7 @@ firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 lottie = {group = "com.airbnb.android", name = "lottie", version.ref = "lottie"}
+dotsindicator = {group = "com.tbuonomo", name = "dotsindicator", version.ref = "dotsindicator"}
 
 
 [plugins]

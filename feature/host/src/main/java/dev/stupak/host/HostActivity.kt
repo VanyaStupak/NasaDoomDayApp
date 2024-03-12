@@ -1,7 +1,5 @@
 package dev.stupak.host
 
-
-
 import androidx.navigation.fragment.NavHostFragment
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.WorkManager
@@ -23,6 +21,10 @@ class HostActivity : BaseActivity(R.layout.activity_host) {
             ExistingPeriodicWorkPolicy.UPDATE,
             AsteroidWorker.createPeriodicRequest(),
         )
+
+        if (isFirstRun()) {
+            navigateToFlow(NavigationFlow.OnboardingFlow)
+        }
 
     }
     private fun initializeNavController() {

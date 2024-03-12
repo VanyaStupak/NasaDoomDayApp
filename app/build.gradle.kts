@@ -46,6 +46,7 @@ dependencies {
     implementation(project(":feature:favourites"))
     implementation(project(":feature:comparison"))
     implementation(project(":feature:details"))
+    implementation(project(":feature:onboarding"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)

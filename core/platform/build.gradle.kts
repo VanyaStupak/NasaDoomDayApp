@@ -40,6 +40,8 @@ android {
 
 dependencies {
     implementation(project(":core:navigation"))
+    implementation(project(":core:ui"))
+    implementation(libs.core.splashscreen)
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.android.material)

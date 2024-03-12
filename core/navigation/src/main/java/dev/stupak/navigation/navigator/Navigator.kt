@@ -1,11 +1,7 @@
 package dev.stupak.navigation.navigator
 
 import android.net.Uri
-import android.os.Bundle
-import android.util.Log
-import androidx.core.os.bundleOf
 import androidx.navigation.NavController
-import androidx.navigation.navArgument
 import dev.stupak.navigation.NavGraphDirections
 
 class Navigator {
@@ -27,9 +23,8 @@ class Navigator {
                     is NavigationFlow.HostFlow -> navigateToHost()
                     is NavigationFlow.DetailsFlow -> navigateToDetails()
                     is NavigationFlow.FavouritesFlow -> navigateToFavourites()
-                    else -> {
-
-                    }
+                    is NavigationFlow.OnboardingFlow -> navigateToOnboarding()
+                    else -> {}
                 }
             } else {
                 navigate(Uri.parse(deeplink))
@@ -39,6 +34,7 @@ class Navigator {
 
 
     internal fun navigateToHost() {
+        navController.currentDestination?.id?.let { navController.popBackStack(it, true) }
         navController.navigate(NavGraphDirections.actionGlobalHostFlow())
     }
 
@@ -48,6 +44,10 @@ class Navigator {
 
     internal fun navigateToDetails() {
         navController.navigate(NavGraphDirections.actionGlobalDetailsFlow())
+    }
+
+    internal fun navigateToOnboarding() {
+        navController.navigate(NavGraphDirections.actionGlobalOnboardingFlow())
     }
 
     internal fun navigateToComparison(asteroidId: String) {

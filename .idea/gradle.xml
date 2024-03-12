@@ -29,6 +29,7 @@
             <option value="$PROJECT_DIR$/feature/details" />
             <option value="$PROJECT_DIR$/feature/favourites" />
             <option value="$PROJECT_DIR$/feature/host" />
+            <option value="$PROJECT_DIR$/feature/onboarding" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />
