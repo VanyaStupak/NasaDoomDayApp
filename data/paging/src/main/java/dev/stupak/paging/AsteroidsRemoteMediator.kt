@@ -51,9 +51,6 @@ class AsteroidsRemoteMediator(
         val currentDate = startDate ?: getCurrentDate()
         val limitDate = calculateDate(currentDate, pageIndex)
         val offsetDate = calculateDate(currentDate, pageIndex + 1)
-        if (limitDate == endDate && !isOneDay){
-            return MediatorResult.Success(endOfPaginationReached = true)
-        }
         val limit = formatDate(limitDate)
         val offset = formatDate(offsetDate)
         return try {

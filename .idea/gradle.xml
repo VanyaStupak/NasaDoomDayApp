@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/data/paging" />
             <option value="$PROJECT_DIR$/data/repository" />
             <option value="$PROJECT_DIR$/data/source" />
+            <option value="$PROJECT_DIR$/data/worker" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/asteroids" />

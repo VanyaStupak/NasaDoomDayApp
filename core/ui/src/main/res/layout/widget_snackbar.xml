@@ -20,15 +20,16 @@
         android:src="@drawable/ic_warning"/>
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_gravity="center"
         android:layout_marginHorizontal="16dp"
         android:textColor="@color/white"
         android:fontFamily="@font/inter_bold"
         android:textSize="14sp"
-        android:gravity="center"
-        android:text="@string/there_is_nothing_to_compare_this_asteroid_with_yet"/>
+        android:gravity="center"/>
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btn_close"

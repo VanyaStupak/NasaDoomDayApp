@@ -37,7 +37,7 @@ import dev.stupak.navigation.navigator.NavigationFlow
 import dev.stupak.platform.base.BaseFragment
 import dev.stupak.ui.ext.removeBrackets
 import dev.stupak.ui.ext.replaceMonthWithNumber
-import dev.stupak.ui.ext.showNothingToCompareSnackbar
+import dev.stupak.ui.ext.showSnackbar
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -80,7 +80,7 @@ class FragmentDetails : BaseFragment(R.layout.fragment_details) {
            btnCompare.setOnClickListener {
                lifecycleScope.launch {
                    if (viewModel.getFavouritesSize() == 1){
-                       view?.showNothingToCompareSnackbar(requireView())
+                       view?.showSnackbar(requireView(), SNACKBAR_TEXT)
                    } else{
                        navigateToFlow(NavigationFlow.ComparisonFlow, false, null, asteroidId)
                    }
@@ -104,6 +104,9 @@ class FragmentDetails : BaseFragment(R.layout.fragment_details) {
                     if (viewModel.detailsData.value.isInFavourite) {
                         viewModel.removeAsteroidFromFavourites(asteroidId)
                     }
+                    if (fromFragment == "favourites"){
+                        findNavController().popBackStack()
+                    }
                 }
             }
 
@@ -121,6 +124,14 @@ class FragmentDetails : BaseFragment(R.layout.fragment_details) {
                         dev.stupak.ui.R.drawable.ic_arrow_down, 0
                     )
                 }
+            }
+
+            if (fromFragment == "push"){
+                btnShowCharacteristics.isChecked = true
+                nestedScroll.post {
+                    nestedScroll.fullScroll(View.FOCUS_DOWN)
+                }
+                 linearChart.background = ContextCompat.getDrawable(requireContext(), dev.stupak.ui.R.drawable.bg_comparison_button_pressed)
             }
         }
 
@@ -292,6 +303,7 @@ class FragmentDetails : BaseFragment(R.layout.fragment_details) {
     }
 
     companion object {
+        private const val SNACKBAR_TEXT = "There is nothing to compare this asteroid with yet"
         private const val ASTEROID_ID_KEY = "asteroid_id"
         private const val FROM_FRAGMENT_KEY = "from"
     }

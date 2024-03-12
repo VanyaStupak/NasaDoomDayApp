@@ -10,8 +10,9 @@ import androidx.core.view.updateLayoutParams
 import com.google.android.material.snackbar.Snackbar
 import dev.stupak.ui.databinding.WidgetSnackbarBinding
 
-fun View.showNothingToCompareSnackbar(
+fun View.showSnackbar(
     view: View,
+    text: String,
 ) {
     val snackbar = Snackbar.make(view, "", Snackbar.LENGTH_INDEFINITE)
     snackbar.view.updateLayoutParams<FrameLayout.LayoutParams> {
@@ -22,8 +23,11 @@ fun View.showNothingToCompareSnackbar(
     snackbarLayoutBinding?.setPadding(0, 0, 0, 0)
 
     val binding = WidgetSnackbarBinding.inflate(LayoutInflater.from(view.context))
-        binding.btnClose.setOnClickListener {
-            snackbar.dismiss()
+        binding.apply {
+            btnClose.setOnClickListener {
+                snackbar.dismiss()
+            }
+            tvTitle.text = text
         }
     snackbarLayoutBinding?.addView(binding.root)
 

@@ -340,7 +340,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="4dp"
                 app:cardBackgroundColor="@color/secondaryGray100"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
                 app:strokeColor="@color/tertiaryViolet600"
@@ -378,7 +378,7 @@
                             android:layout_gravity="end"
                             android:layout_weight="1"
                             android:scaleType="fitEnd"
-                            android:src="@drawable/ic_asteroid_round" />
+                            android:src="@drawable/ic_ceres" />
 
 
                     </LinearLayout>
@@ -410,6 +410,7 @@
 
 
                     <LinearLayout
+                        android:id="@+id/linear_chart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"

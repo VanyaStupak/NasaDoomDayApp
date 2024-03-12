@@ -24,7 +24,6 @@
     <string name="ceres_950_km">Ceres - 950 km</string>
     <string name="sort_by">Sort by</string>
     <string name="date_from_to">Date from - to</string>
-    <string name="there_is_nothing_to_compare_this_asteroid_with_yet">There is nothing to compare this asteroid with yet</string>
 
     <string-array name="filter_options">
         <item>All</item>

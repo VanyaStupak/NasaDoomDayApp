@@ -1,6 +1,7 @@
 package dev.stupak.asteroids
 
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
@@ -8,12 +9,13 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.core.content.PermissionChecker
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.LOGGER
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -29,6 +31,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 @RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
@@ -39,13 +42,53 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
     private var selectedFilter: Int = 0
     private var startDate: Date? = null
     private var endDate: Date? = null
+    private val pushNotificationPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission(),
+        ) {}
 
     override fun configureUi(savedInstanceState: Bundle?) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val isPermissionGranted =
+                PermissionChecker.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.POST_NOTIFICATIONS,
+                ) == PermissionChecker.PERMISSION_GRANTED
+            if (!isPermissionGranted) {
+                pushNotificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+
         val lifecycleOwner = viewLifecycleOwner.lifecycle
         adapter =
             AsteroidsAdapter { asteroidId ->
                 navigateToFlow(null, false, "asteroids://app/$asteroidId/asteroids")
             }
+
+        adapter.addLoadStateListener { state ->
+            when (state.refresh) {
+                is LoadState.Loading -> {
+                    binding.loader.apply {
+                        visibility = View.VISIBLE
+                        playAnimation()
+                    }
+                }
+
+                is LoadState.NotLoading -> {
+                    binding.loader.apply {
+                        visibility = View.GONE
+                    }
+                }
+
+                is LoadState.Error -> {
+                    binding.loader.apply {
+                        playAnimation()
+                        visibility = View.GONE
+                    }
+                }
+            }
+        }
 
         binding.apply {
             rvAsteroids.layoutManager = LinearLayoutManager(requireContext())
@@ -111,31 +154,38 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
             .setTextInputFormat(SimpleDateFormat(DATE_PATTERN, Locale.getDefault()))
             .setTheme(dev.stupak.ui.R.style.ThemeOverlay_App_MaterialCalendar)
             .build()
+
         materialDateRangePicker.addOnPositiveButtonClickListener { selection ->
             val startDateMillis = selection.first
             val endDateMillis = selection.second
 
-            val startCalendar = Calendar.getInstance()
-            startCalendar.timeInMillis = startDateMillis
+            if (endDateMillis - startDateMillis > TimeUnit.DAYS.toMillis(7)) {
+                Toast.makeText(requireContext(), SNACKBAR_TEXT,Toast.LENGTH_LONG).show()
+                return@addOnPositiveButtonClickListener
+            } else {
 
-            val endCalendar = Calendar.getInstance()
-            endCalendar.timeInMillis = endDateMillis
+                val startCalendar = Calendar.getInstance()
+                startCalendar.timeInMillis = startDateMillis
 
-            val startDateString =
-                SimpleDateFormat(DATE_PATTERN, Locale.getDefault()).format(startCalendar.time)
-            startDate = convertStringToDate(startDateString)
-            val endDateString =
-                SimpleDateFormat(DATE_PATTERN, Locale.getDefault()).format(endCalendar.time)
-            endDate = convertStringToDate(endDateString)
+                val endCalendar = Calendar.getInstance()
+                endCalendar.timeInMillis = endDateMillis
 
-            viewModel.setSort(
-                convertStringToDate(startDateString),
-                convertStringToDate(endDateString),
-                isPotentiallyDangerous = isPotentiallyDangerous
-            )
-            binding.apply {
-                viewModel.setFilterState(startDateString, endDateString, View.VISIBLE)
-                rvAsteroids.scrollToPosition(0)
+                val startDateString =
+                    SimpleDateFormat(DATE_PATTERN, Locale.getDefault()).format(startCalendar.time)
+                startDate = convertStringToDate(startDateString)
+                val endDateString =
+                    SimpleDateFormat(DATE_PATTERN, Locale.getDefault()).format(endCalendar.time)
+                endDate = convertStringToDate(endDateString)
+
+                viewModel.setSort(
+                    convertStringToDate(startDateString),
+                    convertStringToDate(endDateString),
+                    isPotentiallyDangerous = isPotentiallyDangerous
+                )
+                binding.apply {
+                    viewModel.setFilterState(startDateString, endDateString, View.VISIBLE)
+                    rvAsteroids.scrollToPosition(0)
+                }
             }
         }
 
@@ -169,6 +219,7 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
             ) {
                 when (parent?.getItemAtPosition(position).toString()) {
                     "Yes" -> {
+                        Log.d("eroieriuger", "Yes = $startDate + $endDate" )
                         if (selectedFilter != 1) {
                             viewModel.setSort(startDate, endDate, true)
                         }
@@ -178,6 +229,7 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
                     }
 
                     "No" -> {
+                        Log.d("eroieriuger", "NO = $startDate + $endDate" )
                         if (selectedFilter != 2) {
                             viewModel.setSort(startDate, endDate, false)
                         }
@@ -187,6 +239,7 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
                     }
 
                     "All" -> {
+                        Log.d("eroieriuger", "All = $startDate + $endDate" )
                         if (selectedFilter != 0) {
                             viewModel.setSort(startDate, endDate, null)
                         }
@@ -210,6 +263,7 @@ class FragmentAsteroids : BaseFragment(R.layout.fragment_asteroids) {
     }
 
     companion object {
+        private const val SNACKBAR_TEXT = "You can't choose more than 7 days"
         private const val DATE_PATTERN = "yyyy-MM-dd"
     }
 

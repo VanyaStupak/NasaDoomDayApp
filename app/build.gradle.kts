@@ -47,7 +47,6 @@ dependencies {
     implementation(project(":feature:comparison"))
     implementation(project(":feature:details"))
 
-
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.android.material)
@@ -55,5 +54,7 @@ dependencies {
     implementation(libs.dagger.hilt.android)
     kapt(libs.com.google.dagger.hilt.compiler)
     kapt(libs.androidx.hilt.compiler)
+    implementation(libs.androidx.hilt.work)
+    implementation(libs.work.runtime.ktx)
 
 }

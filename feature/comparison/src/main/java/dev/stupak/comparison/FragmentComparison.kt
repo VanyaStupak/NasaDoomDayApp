@@ -19,13 +19,8 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import dev.stupak.comparison.adapter.PagerAdapter
 import dev.stupak.comparison.databinding.FragmentComparisonBinding
-import dev.stupak.comparison.model.PagerUIModel
 import dev.stupak.platform.base.BaseFragment
 import dev.stupak.ui.ext.removeBrackets
-import dev.stupak.ui.ext.showNothingToCompareSnackbar
-import kotlinx.coroutines.flow.collect
-
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlin.math.abs
 
@@ -202,6 +197,6 @@ class FragmentComparison : BaseFragment(R.layout.fragment_comparison) {
     private fun calculatePaddingFromScreenHeight(resources: Resources): Int {
         val displayMetrics: DisplayMetrics = resources.displayMetrics
         val screenHeight = displayMetrics.heightPixels
-        return (screenHeight - 130) / 3
+        return (screenHeight - 155) / 3
     }
 }

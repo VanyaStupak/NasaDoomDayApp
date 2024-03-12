@@ -79,7 +79,6 @@ constructor(
                         pagingData.map { it.toAsteroidsUiModel() }
                     }
                 }
-
         }
     }
 }

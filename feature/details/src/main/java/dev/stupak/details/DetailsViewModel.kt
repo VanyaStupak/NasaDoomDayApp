@@ -94,7 +94,7 @@ class DetailsViewModel @Inject constructor(
         asteroidId: String,
         fromFragment: String?
     ) {
-        val asteroid = if (fromFragment == "favourites" || fromFragment == "comparison" ){
+        val asteroid = if (fromFragment == "favourites" || fromFragment == "comparison" || fromFragment == "push" ){
             getFavouriteByIdUseCase.invoke(asteroidId)
         } else {
             getAsteroidByIdUseCase.invoke(asteroidId)

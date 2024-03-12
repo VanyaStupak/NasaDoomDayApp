@@ -3,11 +3,14 @@ package dev.stupak.host
 
 
 import androidx.navigation.fragment.NavHostFragment
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.WorkManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import dev.stupak.host.databinding.ActivityHostBinding
 import dev.stupak.navigation.navigator.NavigationFlow
 import dev.stupak.platform.base.BaseActivity
+import dev.stupak.worker.AsteroidWorker
 
 @AndroidEntryPoint
 class HostActivity : BaseActivity(R.layout.activity_host) {
@@ -15,6 +18,12 @@ class HostActivity : BaseActivity(R.layout.activity_host) {
 
     override fun configureUi() {
         initializeNavController()
+        WorkManager.getInstance(applicationContext).enqueueUniquePeriodicWork(
+            "MyWork",
+            ExistingPeriodicWorkPolicy.UPDATE,
+            AsteroidWorker.createPeriodicRequest(),
+        )
+
     }
     private fun initializeNavController() {
         (

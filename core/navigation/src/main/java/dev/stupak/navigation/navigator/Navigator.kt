@@ -26,6 +26,7 @@ class Navigator {
                     is NavigationFlow.ComparisonFlow -> navigateToComparison(argument ?: "")
                     is NavigationFlow.HostFlow -> navigateToHost()
                     is NavigationFlow.DetailsFlow -> navigateToDetails()
+                    is NavigationFlow.FavouritesFlow -> navigateToFavourites()
                     else -> {
 
                     }
@@ -39,6 +40,10 @@ class Navigator {
 
     internal fun navigateToHost() {
         navController.navigate(NavGraphDirections.actionGlobalHostFlow())
+    }
+
+    internal fun navigateToFavourites() {
+        navController.navigate(NavGraphDirections.actionGlobalFavouritesFlow())
     }
 
     internal fun navigateToDetails() {

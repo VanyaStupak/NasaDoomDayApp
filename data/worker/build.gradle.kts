@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.stupak.asteroids"
+    namespace = "dev.stupak.worker"
     compileSdk = 34
 
     defaultConfig {
@@ -33,28 +33,14 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
+    implementation(project(":data:repository"))
     implementation(project(":core:ui"))
-    implementation(project(":core:platform"))
-    implementation(project(":core:navigation"))
-    implementation(project(":data:network"))
-    implementation(project(":domain"))
+    implementation(libs.work.runtime.ktx)
+    implementation(libs.androidx.hilt.work)
     implementation(libs.dagger.hilt.android)
     kapt(libs.com.google.dagger.hilt.compiler)
     kapt(libs.androidx.hilt.compiler)
-    implementation(libs.lottie)
-    implementation(libs.room.paging)
-    implementation(libs.room)
-    implementation(libs.paging)
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.android.material)
-    implementation(libs.viewbindingpropertydelegate)
-    implementation(libs.navigation.fragment.ktx)
-    implementation(libs.navigation.ui.ktx)
 }
