@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/host_flow"
+    tools:keep="@navigation/nav_graph">
+
+
+    <include app:graph="@navigation/host_flow" />
+    <include app:graph="@navigation/details_flow" />
+    <include app:graph="@navigation/comparison_flow" />
+    <include app:graph="@navigation/favorites_flow" />
+    <include app:graph="@navigation/onboarding_flow" />
+
+    <action
+        android:id="@+id/action_global_comparison_flow"
+        app:destination="@id/comparison_flow"
+        app:enterAnim="@android:anim/fade_in" />
+
+    <action
+        android:id="@+id/action_global_host_flow"
+        app:destination="@id/host_flow" />
+
+    <action
+        android:id="@+id/action_global_details_flow"
+        app:destination="@id/details_flow" />
+
+    <action
+        android:id="@+id/action_global_favourites_flow"
+        app:destination="@id/favourites_flow" />
+
+    <action
+        android:id="@+id/action_global_onboarding_flow"
+        app:destination="@id/onboarding_flow" />
+
+</navigation>

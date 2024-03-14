@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="host_flow" type="id" />
+    <item name="details_flow" type="id" />
+    <item name="favourites_flow" type="id" />
+    <item name="comparison_flow" type="id" />
+    <item name="onboarding_flow" type="id" />
+</resources>

@@ -1,6 +1,11 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.com.android.application)
+    alias(libs.plugins.org.jetbrains.kotlin)
+    alias(libs.plugins.com.google.dagger.hilt.android)
+    alias(libs.plugins.com.google.firebase.crashlytics)
+    alias(libs.plugins.org.jmailen.kotlinter)
+    id("com.google.gms.google-services")
+    kotlin("kapt")
 }
 
 android {
@@ -14,18 +19,8 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -36,12 +31,21 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:ui"))
+    implementation(project(":core:platform"))
+    implementation(project(":core:navigation"))
+    implementation(project(":feature:host"))
+    implementation(project(":feature:asteroids"))
+    implementation(project(":feature:favourites"))
+    implementation(project(":feature:comparison"))
+    implementation(project(":feature:details"))
+    implementation(project(":feature:onboarding"))
+    implementation(project(":feature:settings"))
+    implementation(libs.dagger.hilt.android)
+    kapt(libs.com.google.dagger.hilt.compiler)
+    kapt(libs.androidx.hilt.compiler)
+    implementation(libs.androidx.hilt.work)
+    implementation(libs.work.runtime.ktx)
+    implementation(libs.firebase.crashlytics)
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

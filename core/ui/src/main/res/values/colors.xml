@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background">#F9F9FA</color>
+    <color name="primaryBlack">#040A17</color>
+    <color name="secondaryRed">#F84C16</color>
+    <color name="secondaryGray50">#FCFCFC</color>
+    <color name="secondaryGray100">#F1F1F1</color>
+    <color name="secondaryGray200">#DDDEDF</color>
+    <color name="secondaryGray400">#ADAFB3</color>
+    <color name="secondaryGray600">#7C7F85</color>
+    <color name="secondaryGray700">#646870</color>
+    <color name="secondaryGray800">#4D515A</color>
+    <color name="secondaryGray900">#343943</color>
+    <color name="secondaryOrange">#F89E16</color>
+    <color name="secondaryGreen">#339D66</color>
+    <color name="secondaryBlue600">#7FA1ED</color>
+    <color name="secondaryBlue400">#BFD0F6</color>
+    <color name="secondaryBlue900">#5582E7</color>
+    <color name="darkBlue80">#CD202035</color>
+    <color name="tertiaryViolet50">#F9F9FD</color>
+    <color name="tertiaryViolet100">#F0EFFA</color>
+    <color name="tertiaryViolet200">#E1DFF4</color>
+    <color name="tertiaryViolet300">#C3BEE9</color>
+    <color name="tertiaryViolet600">#A69EDF</color>
+    <color name="tertiaryViolet700">#887DD4</color>
+    <color name="tertiaryViolet900">#5D50BB</color>
+    <color name="transparent">#00FFFFFF</color>
+</resources>

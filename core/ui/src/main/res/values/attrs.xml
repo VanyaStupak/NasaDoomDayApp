@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomToolbar">
+        <attr name="ct_btn_info" format="reference" />
+        <attr name="ct_txt_name" format="string" />
+        <attr name="ct_txt_title" format="string" />
+        <attr name="ct_background_color" format="reference|color" />
+        <attr name="ct_btn_back_visibility" format="integer" />
+        <attr name="ct_btn_info_visibility" format="integer" />
+        <attr name="ct_txt_title_visibility" format="integer" />
+        <attr name="ct_txt_color" format="color" />
+        <attr name="ct_txt_name_visibility" format="integer" />
+    </declare-styleable>
+
+</resources>
