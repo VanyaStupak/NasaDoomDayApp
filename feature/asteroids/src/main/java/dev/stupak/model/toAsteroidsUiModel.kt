@@ -28,6 +28,6 @@ fun AsteroidsDomainModel.toAsteroidsUiModel(): AsteroidsUIModel {
         missDistanceKm = missDistanceKm,
         missDistanceMiles = missDistanceMiles,
         orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
     )
 }

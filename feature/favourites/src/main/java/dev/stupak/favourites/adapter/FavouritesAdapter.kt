@@ -22,7 +22,6 @@ class FavouritesAdapter(
         val tvOrbitingBody: TextView = binding.tvOrbitingBody
     }
 
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -50,8 +49,8 @@ class FavouritesAdapter(
                     tvPotentiallyDangerous.setTextColor(
                         itemView.context.resources.getColor(
                             dev.stupak.ui.R.color.secondaryRed,
-                            null
-                        )
+                            null,
+                        ),
                     )
                     "Yes"
                 } else {
@@ -68,7 +67,6 @@ class FavouritesAdapter(
         asteroids = newList
         notifyDataSetChanged()
     }
-
 
     override fun getItemCount(): Int = asteroids.size
 }

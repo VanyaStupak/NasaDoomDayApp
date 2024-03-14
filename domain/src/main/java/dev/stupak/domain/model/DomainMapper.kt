@@ -1,5 +1,6 @@
 package dev.stupak.domain.model
 
+import dev.stupak.local.impl.SettingsDataModel
 import dev.stupak.repository.model.AsteroidsRepositoryModel
 import dev.stupak.repository.model.FavouritesRepositoryModel
 
@@ -29,7 +30,7 @@ fun AsteroidsRepositoryModel.toAsteroidsDomainModel(): AsteroidsDomainModel {
         missDistanceKm = missDistanceKm,
         missDistanceMiles = missDistanceMiles,
         orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
     )
 }
 
@@ -59,6 +60,24 @@ fun FavouritesRepositoryModel.toAsteroidsDomainModel(): AsteroidsDomainModel {
         missDistanceKm = missDistanceKm,
         missDistanceMiles = missDistanceMiles,
         orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
+    )
+}
+
+fun SettingsDataModel.toSettingsDataDomainModel(): SettingsDataDomainModel {
+    return SettingsDataDomainModel(
+        diameterUnit = diameterUnit,
+        velocityUnit = velocityUnit,
+        distanceUnit = distanceUnit,
+        pushInterval = pushInterval,
+    )
+}
+
+fun SettingsDataDomainModel.toSettingsDataModel(): SettingsDataModel {
+    return SettingsDataModel(
+        diameterUnit = diameterUnit,
+        velocityUnit = velocityUnit,
+        distanceUnit = distanceUnit,
+        pushInterval = pushInterval,
     )
 }

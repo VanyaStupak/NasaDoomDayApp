@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/page_item"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -14,7 +13,7 @@
         android:layout_marginHorizontal="16dp"
         android:fontFamily="@font/inter_bold"
         android:gravity="center"
-        android:text="Proximity Alert"
+        android:text="@string/proximity_alert"
         android:textColor="@color/primaryBlack"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,19 +22,33 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2" />
 
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_screen_image"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="48dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_asteroid_in_earth"
+        app:layout_constraintEnd_toEndOf="@+id/tv_title"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
     <TextView
         android:id="@+id/tv_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/primaryBlack"
         android:fontFamily="@font/inter"
-        android:text="Receive notifications when asteroids approach Earth"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/tv_title"
-        app:layout_constraintStart_toStartOf="@+id/tv_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+        android:gravity="center"
+        android:text="@string/receive_notifications_about_an_asteroid_approaching_the_earth"
+        android:textColor="@color/primaryBlack"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_screen_image"
+        app:layout_constraintStart_toStartOf="@+id/iv_screen_image"
+        app:layout_constraintTop_toBottomOf="@+id/iv_screen_image" />
 
     <TextView
         android:id="@+id/tv_start"
@@ -44,7 +57,7 @@
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="40dp"
         android:fontFamily="@font/inter_bold"
-        android:text="Get started"
+        android:text="@string/get_started"
         android:textColor="@color/tertiaryViolet900"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"

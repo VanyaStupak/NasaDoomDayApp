@@ -248,7 +248,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/inter"
-                            android:textSize="18sp"
+                            android:textSize="20sp"
                             tools:text="58934.930 km/h" />
 
                         <TextView
@@ -256,7 +256,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/inter"
-                            android:textSize="18sp"
+                            android:textSize="20sp"
                             tools:text="20.71" />
 
                     </LinearLayout>
@@ -265,7 +265,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -293,12 +293,12 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/tv_distance_kilometers"
+                            android:id="@+id/tv_distance"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/inter"
-                            android:textSize="18sp"
+                            android:textSize="20sp"
                             tools:text="55670341.55 km" />
 
 
@@ -307,7 +307,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/inter"
-                            android:textSize="18sp"
+                            android:textSize="20sp"
                             tools:text="No" />
                     </LinearLayout>
 
@@ -325,12 +325,13 @@
                 android:background="@drawable/sel_comparison_button_states"
                 android:drawableEnd="@drawable/ic_arrow_down"
                 android:elevation="2dp"
+                android:textAllCaps="false"
                 android:paddingHorizontal="24dp"
                 android:fontFamily="@font/inter_medium"
                 android:gravity="center"
                 android:textColor="@color/sel_comparison_button_text_color"
-                android:textOff="Show characteristics"
-                android:textOn="Hide characterisctics" />
+                android:textOff="@string/show_characteristics"
+                android:textOn="@string/hide_characterisctics" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_asteroids_characteristics"
@@ -339,7 +340,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginBottom="4dp"
-                app:cardBackgroundColor="@color/secondaryGray100"
+                app:cardBackgroundColor="@color/white"
                 android:visibility="gone"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
@@ -349,12 +350,23 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/inter_medium"
+                        android:textColor="@color/primaryBlack"
+                        android:textSize="20sp"
+                        android:text="@string/size"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_comparison_button_default"
+                        android:paddingBottom="4dp"
+                        android:background="@drawable/bg_size_comparison"
                         android:orientation="vertical">
                     <LinearLayout
                         android:id="@+id/linear_asteroids_pictures"
@@ -368,15 +380,15 @@
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:scaleType="centerInside"
+                            android:scaleType="fitEnd"
                             android:src="@drawable/ic_asteroid_default" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_ceres"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
                             android:scaleType="fitEnd"
                             android:src="@drawable/ic_ceres" />
 
@@ -408,19 +420,52 @@
                     </LinearLayout>
                     </LinearLayout>
 
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/inter_medium"
+                        android:layout_gravity="center"
+                        android:textSize="20sp"
+                        android:textColor="@color/primaryBlack"
+                        android:text="@string/distance"/>
                     <LinearLayout
                         android:id="@+id/linear_chart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
                         android:background="@drawable/bg_comparison_button_default"
                         android:orientation="vertical">
-                <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/ch_line"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp" />
+
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/ch_line"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp" />
                     </LinearLayout>
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content">
+
+                       <TextView
+                           android:id="@+id/tv_one_au"
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="1"
+                           android:fontFamily="@font/inter_medium"
+                           android:gravity="end"
+                           android:text="@string/_1_au" />
+
+                       <TextView
+                           android:id="@+id/tv_asteroid_au"
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="0.5"
+                           android:layout_marginEnd="8dp"
+                           android:fontFamily="@font/inter_medium"
+                           android:gravity="end"
+                           tools:text="0.34 au" />
+                   </LinearLayout>
 
                 </LinearLayout>
 
@@ -429,9 +474,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:padding="4dp"
+                android:layout_marginVertical="16dp"
                 android:layout_marginHorizontal="12dp"
+                android:paddingHorizontal="2dp"
                 android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatToggleButton
@@ -440,23 +485,26 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/sel_button_states"
-                android:elevation="2dp"
                 android:fontFamily="@font/inter_medium"
+                android:textAllCaps="false"
                 android:textColor="@color/sel_add_to_favourites_color"
                 android:textOff="@string/add_to_favourites"
-                android:textOn="@string/remove_from_favourites" />
+                android:textOn="@string/remove_from_favourites"
+                tools:checked="false"/>
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_compare"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_compare_button"
+                app:backgroundTint="@color/white"
+                android:drawableEnd="@drawable/ic_compare"
                 android:fontFamily="@font/inter_medium"
                 android:visibility="gone"
-                android:text="Compare"
-                android:gravity="center"
-                android:textColor="@color/primaryBlack" />
+                android:textAllCaps="false"
+                android:text="@string/compare"
+                android:textColor="@color/tertiaryViolet900" />
 
             </LinearLayout>
         </LinearLayout>

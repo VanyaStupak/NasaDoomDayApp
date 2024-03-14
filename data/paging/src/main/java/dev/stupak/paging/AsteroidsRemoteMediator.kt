@@ -1,18 +1,14 @@
 package dev.stupak.paging
 
-import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-
 import dev.stupak.database.AsteroidsDB
 import dev.stupak.database.model.AsteroidsDBModel
-
 import dev.stupak.source.AsteroidsNetSource
 import dev.stupak.source.model.toAsteroidsDBModel
-
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -24,7 +20,7 @@ class AsteroidsRemoteMediator(
     private val asteroidsDB: AsteroidsDB,
     private val startDate: Date?,
     private val endDate: Date?,
-    private val potentiallyDangerous: Boolean?
+    private val potentiallyDangerous: Boolean?,
 ) : RemoteMediator<Int, AsteroidsDBModel>() {
     private var pageIndex = 0
 
@@ -60,7 +56,7 @@ class AsteroidsRemoteMediator(
                 if (potentiallyDangerous != null && startDate == null && endDate == null) {
                     asteroidsNetSource.getAsteroidList(
                         formatDate(getCurrentDate()),
-                        formatDate(calculateDate(getCurrentDate(), 7))
+                        formatDate(calculateDate(getCurrentDate(), 7)),
                     )
                         .sortedBy { it.closeApproachDate }
                         .filter { it.isPotentiallyHazardousAsteroid == potentiallyDangerous }
@@ -83,11 +79,11 @@ class AsteroidsRemoteMediator(
                 }
             }
             MediatorResult.Success(
-                endOfPaginationReached = asteroidList.isEmpty()
+                endOfPaginationReached = asteroidList.isEmpty(),
             )
         } catch (exception: Exception) {
             MediatorResult.Success(
-                endOfPaginationReached = true
+                endOfPaginationReached = true,
             )
         }
     }
@@ -96,7 +92,10 @@ class AsteroidsRemoteMediator(
         return Calendar.getInstance().time
     }
 
-    private fun calculateDate(date: Date, daysToAdd: Int): Date {
+    private fun calculateDate(
+        date: Date,
+        daysToAdd: Int,
+    ): Date {
         val calendar = Calendar.getInstance()
         calendar.time = date
         calendar.add(Calendar.DAY_OF_YEAR, daysToAdd)

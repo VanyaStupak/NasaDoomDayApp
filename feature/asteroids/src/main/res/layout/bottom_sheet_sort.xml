@@ -44,7 +44,8 @@
         android:fontFamily="@font/inter_medium"
         android:gravity="center"
         android:paddingHorizontal="8dp"
-        android:text="Date  (YYYY.MM.DD-YYYY.MM.DD)"
+        android:textAllCaps="false"
+        android:text="@string/date_range"
         android:textColor="@color/secondaryGray900"
         android:textSize="14sp" />
 
@@ -61,7 +62,7 @@
             android:textSize="16sp"
             android:gravity="center"
             android:textColor="@color/secondaryGray900"
-            android:text="@string/potentially_dangerous"/>
+            android:text="@string/potentially_dangerous_sort"/>
     <Spinner
         android:id="@+id/spinner_filter"
         android:layout_width="wrap_content"

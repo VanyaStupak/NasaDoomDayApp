@@ -10,5 +10,7 @@ interface FavouritesRepository {
 
     suspend fun insertAsteroid(asteroid: FavouritesRepositoryModel)
 
+    suspend fun updateAsteroid(asteroid: FavouritesRepositoryModel)
+
     suspend fun deleteAsteroid(id: String)
 }

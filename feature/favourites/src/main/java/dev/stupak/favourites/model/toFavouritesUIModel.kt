@@ -28,6 +28,6 @@ fun AsteroidsDomainModel.toFavouritesUiModel(): FavouritesUIModel {
         missDistanceKm = missDistanceKm,
         missDistanceMiles = missDistanceMiles,
         orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
     )
 }

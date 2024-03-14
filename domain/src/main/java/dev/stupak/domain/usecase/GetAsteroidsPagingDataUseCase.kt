@@ -14,7 +14,6 @@ import dev.stupak.paging.AsteroidsRemoteMediator
 import dev.stupak.repository.model.toAsteroidsRepositoryModel
 import dev.stupak.source.AsteroidsDBSource
 import dev.stupak.source.AsteroidsNetSource
-import dev.stupak.source.FavouritesDBSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -22,33 +21,38 @@ import kotlinx.coroutines.withContext
 import java.util.Date
 import javax.inject.Inject
 
-class GetAsteroidsPagingDataUseCase @Inject constructor(
-    private val asteroidsNetSource: AsteroidsNetSource,
-    private val asteroidsDBSource: AsteroidsDBSource,
-    private val asteroidsDB: AsteroidsDB
-) {
-
-    @OptIn(ExperimentalPagingApi::class)
-    @RequiresApi(Build.VERSION_CODES.O)
-    suspend operator fun invoke(startDate: Date?, endDate: Date?,isPotentiallyDangerous: Boolean?): Flow<PagingData<AsteroidsDomainModel>> {
-        return withContext(Dispatchers.IO) {
-            Pager(
-                PagingConfig(pageSize = 1),
-                remoteMediator = AsteroidsRemoteMediator(
-                    asteroidsNetSource,
-                    asteroidsDB,
-                    startDate,
-                    endDate,
-                    isPotentiallyDangerous
-                ),
-                pagingSourceFactory = { asteroidsDBSource.getAsteroidsList() }
-            ).flow
-                .map { pagingData ->
-                    pagingData.map {
-                        it.toAsteroidsRepositoryModel().toAsteroidsDomainModel()
+class GetAsteroidsPagingDataUseCase
+    @Inject
+    constructor(
+        private val asteroidsNetSource: AsteroidsNetSource,
+        private val asteroidsDBSource: AsteroidsDBSource,
+        private val asteroidsDB: AsteroidsDB,
+    ) {
+        @OptIn(ExperimentalPagingApi::class)
+        @RequiresApi(Build.VERSION_CODES.O)
+        suspend operator fun invoke(
+            startDate: Date?,
+            endDate: Date?,
+            isPotentiallyDangerous: Boolean?,
+        ): Flow<PagingData<AsteroidsDomainModel>> {
+            return withContext(Dispatchers.IO) {
+                Pager(
+                    PagingConfig(pageSize = 1),
+                    remoteMediator =
+                        AsteroidsRemoteMediator(
+                            asteroidsNetSource,
+                            asteroidsDB,
+                            startDate,
+                            endDate,
+                            isPotentiallyDangerous,
+                        ),
+                    pagingSourceFactory = { asteroidsDBSource.getAsteroidsList() },
+                ).flow
+                    .map { pagingData ->
+                        pagingData.map {
+                            it.toAsteroidsRepositoryModel().toAsteroidsDomainModel()
+                        }
                     }
-                }
+            }
         }
     }
-
-}

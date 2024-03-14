@@ -46,7 +46,6 @@ class CustomDetailsToolbar : ConstraintLayout {
             }
         }
 
-
     constructor(context: Context) : super(context) {
         init()
     }

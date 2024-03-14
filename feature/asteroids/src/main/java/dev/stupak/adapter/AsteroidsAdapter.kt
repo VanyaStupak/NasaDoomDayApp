@@ -1,7 +1,6 @@
 package dev.stupak.adapter
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -28,8 +27,9 @@ class AsteroidsAdapter(
                 tvOrbitingBody.text = asteroid?.orbitingBody
                 tvCloseApproachData.text = asteroid?.closeApproachDate
                 tvPotentiallyDangerous.text =
-                    if (asteroid?.isPotentiallyHazardousAsteroid == true) "Yes"
-                    else {
+                    if (asteroid?.isPotentiallyHazardousAsteroid == true) {
+                        "Yes"
+                    } else {
                         "No"
                     }
                 if (asteroid?.isPotentiallyHazardousAsteroid == true) {
@@ -37,14 +37,14 @@ class AsteroidsAdapter(
                         itemView.context.resources.getColor(
                             dev.stupak.ui.R.color.secondaryRed,
                             null,
-                        )
+                        ),
                     )
                 } else {
                     tvPotentiallyDangerous.setTextColor(
                         itemView.context.resources.getColor(
                             dev.stupak.ui.R.color.primaryBlack,
                             null,
-                        )
+                        ),
                     )
                 }
             }

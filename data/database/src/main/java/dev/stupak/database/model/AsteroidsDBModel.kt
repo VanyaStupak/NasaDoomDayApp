@@ -53,7 +53,7 @@ data class AsteroidsDBModel(
     @ColumnInfo(name = "missDistanceMiles")
     val missDistanceMiles: String,
     @ColumnInfo(name = "orbitingBody")
-    val orbitingBody:String,
+    val orbitingBody: String,
     @ColumnInfo(name = "isSentryObject")
-    val isSentryObject: Boolean
+    val isSentryObject: Boolean,
 )

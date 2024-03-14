@@ -23,12 +23,12 @@ fun View.showSnackbar(
     snackbarLayoutBinding?.setPadding(0, 0, 0, 0)
 
     val binding = WidgetSnackbarBinding.inflate(LayoutInflater.from(view.context))
-        binding.apply {
-            btnClose.setOnClickListener {
-                snackbar.dismiss()
-            }
-            tvTitle.text = text
+    binding.apply {
+        btnClose.setOnClickListener {
+            snackbar.dismiss()
         }
+        tvTitle.text = text
+    }
     snackbarLayoutBinding?.addView(binding.root)
 
     Handler(Looper.getMainLooper()).postDelayed({

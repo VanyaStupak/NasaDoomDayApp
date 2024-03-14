@@ -14,5 +14,6 @@ import dev.stupak.database.model.FavouritesDBModel
 )
 abstract class AsteroidsDB : RoomDatabase() {
     abstract fun getAsteroidsDao(): AsteroidsDao
+
     abstract fun getFavouritesDao(): FavouritesDao
 }

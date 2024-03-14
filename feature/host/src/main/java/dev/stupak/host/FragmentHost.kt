@@ -28,7 +28,8 @@ class FragmentHost : BaseFragment(R.layout.fragment_host) {
             AppBarConfiguration(
                 setOf(
                     R.id.item_asteroids,
-                     R.id.item_favourites
+                    R.id.item_favourites,
+                    R.id.item_settings
                 )
             )
         with(binding) {

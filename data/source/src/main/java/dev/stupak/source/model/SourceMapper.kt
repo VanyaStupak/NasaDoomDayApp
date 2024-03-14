@@ -30,7 +30,7 @@ fun AsteroidsDBModel.toAsteroidsSourceDBModel(): AsteroidsSourceDBModel {
         missDistanceKm = missDistanceKm,
         missDistanceMiles = missDistanceMiles,
         orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
     )
 }
 
@@ -60,7 +60,8 @@ fun FavouritesDBModel.toFavouritesSourceDBModel(): FavouritesSourceDBModel {
         missDistanceKm = missDistanceKm,
         missDistanceMiles = missDistanceMiles,
         orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
+        notificationSent = notificationSent,
     )
 }
 
@@ -72,8 +73,8 @@ fun Asteroid.toAsteroidsSourceNetModel(): AsteroidsSourceNetModel {
         absoluteMagnitudeH = absoluteMagnitudeH,
         minDiameterKm = estimatedDiameter.kilometers.estimatedDiameterMin,
         maxDiameterKm = estimatedDiameter.kilometers.estimatedDiameterMax,
-        minDiameterM =   estimatedDiameter.meters.estimatedDiameterMin,
-        maxDiameterM =  estimatedDiameter.meters.estimatedDiameterMax,
+        minDiameterM = estimatedDiameter.meters.estimatedDiameterMin,
+        maxDiameterM = estimatedDiameter.meters.estimatedDiameterMax,
         minDiameterMile = estimatedDiameter.miles.estimatedDiameterMin,
         maxDiameterMile = estimatedDiameter.miles.estimatedDiameterMax,
         minDiameterFeet = estimatedDiameter.feet.estimatedDiameterMin,
@@ -90,7 +91,7 @@ fun Asteroid.toAsteroidsSourceNetModel(): AsteroidsSourceNetModel {
         missDistanceKm = closeApproachData.first().missDistance.kilometers,
         missDistanceMiles = closeApproachData.first().missDistance.miles,
         orbitingBody = closeApproachData.first().orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
     )
 }
 
@@ -120,6 +121,6 @@ fun AsteroidsSourceNetModel.toAsteroidsDBModel(): AsteroidsDBModel {
         missDistanceKm = missDistanceKm,
         missDistanceMiles = missDistanceMiles,
         orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
     )
 }

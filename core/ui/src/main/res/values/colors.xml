@@ -24,6 +24,7 @@
     <color name="tertiaryViolet200">#E1DFF4</color>
     <color name="tertiaryViolet300">#C3BEE9</color>
     <color name="tertiaryViolet600">#A69EDF</color>
+    <color name="tertiaryViolet700">#887DD4</color>
     <color name="tertiaryViolet900">#5D50BB</color>
     <color name="transparent">#00FFFFFF</color>
 </resources>

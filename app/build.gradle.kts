@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin)
     alias(libs.plugins.com.google.dagger.hilt.android)
+    alias(libs.plugins.com.google.firebase.crashlytics)
+    alias(libs.plugins.org.jmailen.kotlinter)
+    id("com.google.gms.google-services")
     kotlin("kapt")
 }
 
@@ -16,18 +19,8 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -47,15 +40,12 @@ dependencies {
     implementation(project(":feature:comparison"))
     implementation(project(":feature:details"))
     implementation(project(":feature:onboarding"))
-
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.android.material)
-    implementation(libs.constraintlayout)
+    implementation(project(":feature:settings"))
     implementation(libs.dagger.hilt.android)
     kapt(libs.com.google.dagger.hilt.compiler)
     kapt(libs.androidx.hilt.compiler)
     implementation(libs.androidx.hilt.work)
     implementation(libs.work.runtime.ktx)
+    implementation(libs.firebase.crashlytics)
 
 }

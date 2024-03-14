@@ -9,24 +9,23 @@ import dev.stupak.source.model.toAsteroidsSourceDBModel
 import javax.inject.Inject
 
 class AsteroidsDBSourceImpl
-@Inject
-constructor(
-    private val asteroidDao: AsteroidsDao
-): AsteroidsDBSource {
-    override fun getAsteroidsList(): PagingSource<Int, AsteroidsDBModel> {
-           return asteroidDao.getAllAsteroids()
-    }
+    @Inject
+    constructor(
+        private val asteroidDao: AsteroidsDao,
+    ) : AsteroidsDBSource {
+        override fun getAsteroidsList(): PagingSource<Int, AsteroidsDBModel> {
+            return asteroidDao.getAllAsteroids()
+        }
 
-    override suspend fun insertAsteroid(asteroidsDBModel: AsteroidsDBModel) {
-       asteroidDao.insertAsteroid(asteroidsDBModel)
-    }
+        override suspend fun insertAsteroid(asteroidsDBModel: AsteroidsDBModel) {
+            asteroidDao.insertAsteroid(asteroidsDBModel)
+        }
 
-    override suspend fun getAsteroid(id: String): AsteroidsSourceDBModel {
-        return asteroidDao.getAsteroid(id).toAsteroidsSourceDBModel()
-    }
+        override suspend fun getAsteroid(id: String): AsteroidsSourceDBModel {
+            return asteroidDao.getAsteroid(id).toAsteroidsSourceDBModel()
+        }
 
-    override suspend fun deleteAll() {
-        asteroidDao.deleteAll()
+        override suspend fun deleteAll() {
+            asteroidDao.deleteAll()
+        }
     }
-
-}

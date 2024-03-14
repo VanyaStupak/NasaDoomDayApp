@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.org.jetbrains.kotlin)
     alias(libs.plugins.com.google.dagger.hilt.android)
+    alias(libs.plugins.org.jmailen.kotlinter)
     kotlin("kapt")
 }
 
@@ -12,20 +13,8 @@ android {
 
     defaultConfig {
         minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -42,9 +31,6 @@ dependencies {
     implementation(project(":core:navigation"))
     implementation(project(":core:ui"))
     implementation(libs.core.splashscreen)
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.android.material)
     implementation(libs.navigation.ui.ktx)
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.viewbindingpropertydelegate)

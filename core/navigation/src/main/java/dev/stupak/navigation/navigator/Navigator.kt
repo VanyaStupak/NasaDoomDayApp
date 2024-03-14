@@ -11,7 +11,7 @@ class Navigator {
         navigationFlow: NavigationFlow?,
         clearBackStackEntry: Boolean = false,
         deeplink: String? = null,
-        argument: String? = null
+        argument: String? = null,
     ) {
         with(navController) {
             if (clearBackStackEntry) {
@@ -32,7 +32,6 @@ class Navigator {
         }
     }
 
-
     internal fun navigateToHost() {
         navController.currentDestination?.id?.let { navController.popBackStack(it, true) }
         navController.navigate(NavGraphDirections.actionGlobalHostFlow())
@@ -47,14 +46,15 @@ class Navigator {
     }
 
     internal fun navigateToOnboarding() {
+        navController.currentDestination?.id?.let { navController.popBackStack(it, true) }
         navController.navigate(NavGraphDirections.actionGlobalOnboardingFlow())
     }
 
     internal fun navigateToComparison(asteroidId: String) {
-        navController.navigate(NavGraphDirections.actionGlobalComparisonFlow().apply {
-            arguments.putString("id", asteroidId)
-        })
+        navController.navigate(
+            NavGraphDirections.actionGlobalComparisonFlow().apply {
+                arguments.putString("id", asteroidId)
+            },
+        )
     }
-
-
 }

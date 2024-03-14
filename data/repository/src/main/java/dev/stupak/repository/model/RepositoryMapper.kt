@@ -6,7 +6,7 @@ import dev.stupak.source.model.AsteroidsSourceDBModel
 import dev.stupak.source.model.AsteroidsSourceNetModel
 import dev.stupak.source.model.FavouritesSourceDBModel
 
-fun AsteroidsSourceDBModel.toAsteroidsRepositoryModel():AsteroidsRepositoryModel{
+fun AsteroidsSourceDBModel.toAsteroidsRepositoryModel(): AsteroidsRepositoryModel  {
     return AsteroidsRepositoryModel(
         id = id,
         name = name,
@@ -32,11 +32,11 @@ fun AsteroidsSourceDBModel.toAsteroidsRepositoryModel():AsteroidsRepositoryModel
         missDistanceKm = missDistanceKm,
         missDistanceMiles = missDistanceMiles,
         orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
     )
 }
 
-fun FavouritesSourceDBModel.toFavouritesRepositoryModel():FavouritesRepositoryModel{
+fun FavouritesSourceDBModel.toFavouritesRepositoryModel(): FavouritesRepositoryModel  {
     return FavouritesRepositoryModel(
         id = id,
         name = name,
@@ -62,12 +62,12 @@ fun FavouritesSourceDBModel.toFavouritesRepositoryModel():FavouritesRepositoryMo
         missDistanceKm = missDistanceKm,
         missDistanceMiles = missDistanceMiles,
         orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
+        notificationSent = notificationSent,
     )
 }
 
-
-fun AsteroidsSourceNetModel.toAsteroidsRepositoryModel():AsteroidsRepositoryModel{
+fun AsteroidsSourceNetModel.toAsteroidsRepositoryModel(): AsteroidsRepositoryModel  {
     return AsteroidsRepositoryModel(
         id = id,
         name = name,
@@ -93,10 +93,11 @@ fun AsteroidsSourceNetModel.toAsteroidsRepositoryModel():AsteroidsRepositoryMode
         missDistanceKm = missDistanceKm,
         missDistanceMiles = missDistanceMiles,
         orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
     )
 }
-fun AsteroidsRepositoryModel.toFavouritesRepositoryModel(): FavouritesRepositoryModel{
+
+fun AsteroidsRepositoryModel.toFavouritesRepositoryModel(): FavouritesRepositoryModel  {
     return FavouritesRepositoryModel(
         id = id,
         name = name,
@@ -122,10 +123,12 @@ fun AsteroidsRepositoryModel.toFavouritesRepositoryModel(): FavouritesRepository
         missDistanceKm = missDistanceKm,
         missDistanceMiles = missDistanceMiles,
         orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
+        notificationSent = false,
     )
 }
-fun AsteroidsDBModel.toAsteroidsRepositoryModel(): AsteroidsRepositoryModel{
+
+fun AsteroidsDBModel.toAsteroidsRepositoryModel(): AsteroidsRepositoryModel  {
     return AsteroidsRepositoryModel(
         id = id,
         name = name,
@@ -151,11 +154,11 @@ fun AsteroidsDBModel.toAsteroidsRepositoryModel(): AsteroidsRepositoryModel{
         missDistanceKm = missDistanceKm,
         missDistanceMiles = missDistanceMiles,
         orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
     )
 }
 
-fun FavouritesRepositoryModel.toFavouritesDBModel(): FavouritesDBModel{
+fun FavouritesRepositoryModel.toFavouritesDBModel(): FavouritesDBModel  {
     return FavouritesDBModel(
         id = id,
         name = name,
@@ -181,36 +184,7 @@ fun FavouritesRepositoryModel.toFavouritesDBModel(): FavouritesDBModel{
         missDistanceKm = missDistanceKm,
         missDistanceMiles = missDistanceMiles,
         orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
-    )
-}
-
-fun AsteroidsRepositoryModel.toAsteroidsDBModel(): AsteroidsDBModel{
-    return AsteroidsDBModel(
-        id = id,
-        name = name,
-        nasaJplUrl = nasaJplUrl,
-        absoluteMagnitudeH = absoluteMagnitudeH,
-        minDiameterKm = minDiameterKm,
-        maxDiameterKm = maxDiameterKm,
-        minDiameterM = minDiameterM,
-        maxDiameterM = maxDiameterM,
-        minDiameterMile = minDiameterMile,
-        maxDiameterMile = maxDiameterMile,
-        minDiameterFeet = minDiameterFeet,
-        maxDiameterFeet = maxDiameterFeet,
-        isPotentiallyHazardousAsteroid = isPotentiallyHazardousAsteroid,
-        closeApproachDate = closeApproachDate,
-        closeApproachDateFull = closeApproachDateFull,
-        closeApproachDateUnix = closeApproachDateUnix,
-        relativeVelocityKmS = relativeVelocityKmS,
-        relativeVelocityKmH = relativeVelocityKmH,
-        relativeVelocityMilesH = relativeVelocityMilesH,
-        missDistanceAstronomical = missDistanceAstronomical,
-        missDistanceLunar = missDistanceLunar,
-        missDistanceKm = missDistanceKm,
-        missDistanceMiles = missDistanceMiles,
-        orbitingBody = orbitingBody,
-        isSentryObject = isSentryObject
+        isSentryObject = isSentryObject,
+        notificationSent = notificationSent,
     )
 }

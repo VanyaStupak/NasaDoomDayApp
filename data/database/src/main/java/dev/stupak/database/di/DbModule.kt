@@ -20,7 +20,7 @@ object DbModule {
     ) = Room.databaseBuilder(
         context,
         AsteroidsDB::class.java,
-        "crypto.db",
+        "asteroids.db",
     ).build()
 
     @Provides

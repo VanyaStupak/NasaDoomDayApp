@@ -9,11 +9,19 @@
         android:id="@+id/item_asteroids"
         android:name="dev.stupak.asteroids.FragmentAsteroids"
         android:label="AsteroidsFragment"
-        tools:layout="@layout/fragment_asteroids" />
+        tools:layout="@layout/fragment_asteroids" >
+    </fragment>
     <fragment
         android:id="@+id/item_favourites"
         android:name="dev.stupak.favourites.FragmentFavourites"
         android:label="FavouritesFragment"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_favourites" >
+    </fragment>
+    <fragment
+        android:id="@+id/item_settings"
+        android:name="dev.stupak.settings.FragmentSettings"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings" >
+    </fragment>
 
 </navigation>

@@ -5,7 +5,6 @@ interface ToFlowNavigable {
         flow: NavigationFlow? = null,
         clearBackStackEntry: Boolean = false,
         deeplink: String? = null,
-        argument: String? = null
+        argument: String? = null,
     )
-
 }

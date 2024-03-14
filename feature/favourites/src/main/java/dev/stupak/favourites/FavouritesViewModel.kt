@@ -1,7 +1,6 @@
 package dev.stupak.favourites
 
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,25 +16,24 @@ import javax.inject.Inject
 
 @RequiresApi(Build.VERSION_CODES.O)
 @HiltViewModel
-class FavouritesViewModel @Inject constructor(
-    private val getFavouritesListUseCase: GetFavouritesListUseCase
-) : ViewModel() {
+class FavouritesViewModel
+    @Inject
+    constructor(
+        private val getFavouritesListUseCase: GetFavouritesListUseCase,
+    ) : ViewModel() {
+        private val _asteroidsListStateFlow = MutableStateFlow<List<FavouritesUIModel>>(emptyList())
+        val asteroidsListStateFlow = _asteroidsListStateFlow.asStateFlow()
 
-    private val _asteroidsListStateFlow = MutableStateFlow<List<FavouritesUIModel>>(emptyList())
-    val asteroidsListStateFlow = _asteroidsListStateFlow.asStateFlow()
+        init {
+            getAsteroids()
+        }
 
-    init {
-        getAsteroids()
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun getAsteroids() {
-        viewModelScope.launch {
-            getFavouritesListUseCase.invoke().collect { asteroids ->
-                _asteroidsListStateFlow.update { asteroids.map { it.toFavouritesUiModel() } }
+        @RequiresApi(Build.VERSION_CODES.O)
+        private fun getAsteroids() {
+            viewModelScope.launch {
+                getFavouritesListUseCase.invoke().collect { asteroids ->
+                    _asteroidsListStateFlow.update { asteroids.map { it.toFavouritesUiModel() } }
+                }
             }
-
         }
     }
-
-}

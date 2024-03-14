@@ -10,7 +10,7 @@
     <string name="absolute_magnitude">Absolute magnitude:</string>
     <string name="relative_velocity">Relative velocity:</string>
     <string name="sentry_object">Sentry object:</string>
-    <string name="miss_distance">Miss distance</string>
+    <string name="miss_distance">Miss distance:</string>
     <string name="astronomical">Astronomical:</string>
     <string name="lunar">Lunar:</string>
     <string name="kilometers">Kilometers:</string>
@@ -24,10 +24,63 @@
     <string name="ceres_950_km">Ceres - 950 km</string>
     <string name="sort_by">Sort by</string>
     <string name="date_from_to">Date from - to</string>
+    <string name="no_content">No content</string>
+    <string name="settings">Settings</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="potentially_dangerous_sort">Potentially dangerous</string>
+    <string name="date_range">Date range</string>
+    <string name="clear_filters">Clear filters</string>
+    <string name="show_characteristics">Show characteristics</string>
+    <string name="hide_characterisctics">Hide characterisctics</string>
+    <string name="size">Size</string>
+    <string name="distance">Distance</string>
+    <string name="_1_au">1 au</string>
+    <string name="compare">Compare</string>
+    <string name="empty_add_some_asteroids_to_favourites">Empty :( Add some asteroids to favourites</string>
+    <string name="skip">Skip</string>
+    <string name="welcome_to_n_nasa_doom_day_app">Welcome to \n Nasa Doom Day App</string>
+    <string name="this_is_your_reliable_guide_to_the_world_of_asteroids_and_space_threats_n_nour_application_gives_you_access_to_the_most_up_to_date_information_about_space_objects_that_may_pose_a_danger_to_our_planet">This is your reliable guide to the world of asteroids and space threats.\n\nOur application gives you access to the most up-to-date information about space objects that may pose a danger to our planet.</string>
+    <string name="next">Next</string>
+    <string name="study_and_compare">Study and compare</string>
+    <string name="learn_detailed_information_about_each_asteroid_including_its_size_speed_distance_to_earth_and_assessment_of_potential_danger_n_nadd_asteroids_to_your_favorites_and_compare_them_n_ntrack_the_trajectories_of_asteroids_and_forecasts_of_their_approach_to_our_planet">Learn detailed information about each asteroid, including its size, speed, distance to Earth, and assessment of potential danger.\n \nAdd asteroids to your favorites and compare them\n\nTrack the trajectories of asteroids and forecasts of their approach to our planet.</string>
+    <string name="proximity_alert">Proximity Alert</string>
+    <string name="receive_notifications_about_an_asteroid_approaching_the_earth">Receive notifications about an asteroid approaching the Earth!</string>
+    <string name="get_started">Get started</string>
+    <string name="unit_formats">Unit formats</string>
+    <string name="diameter">Diameter</string>
+    <string name="velocity">Velocity</string>
+    <string name="time_interval">Time interval</string>
+    <string name="push_notifications">Push notifications</string>
 
     <string-array name="filter_options">
         <item>All</item>
         <item>Yes</item>
         <item>No</item>
+    </string-array>
+
+    <string-array name="diameter_settings">
+        <item>Meters</item>
+        <item>Kilometers</item>
+        <item>Miles</item>
+        <item>Feet</item>
+    </string-array>
+
+    <string-array name="velocity_settings">
+        <item>Km/s</item>
+        <item>Km/h</item>
+        <item>Mi/h</item>
+    </string-array>
+
+    <string-array name="distance_settings">
+        <item>Astronomical</item>
+        <item>Lunar</item>
+        <item>Kilometers</item>
+        <item>Miles</item>
+    </string-array>
+
+    <string-array name="interval_settings">
+        <item>12h</item>
+        <item>24h</item>
+        <item>48h</item>
     </string-array>
 </resources>

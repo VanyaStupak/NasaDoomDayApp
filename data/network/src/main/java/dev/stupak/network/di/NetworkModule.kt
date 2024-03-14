@@ -48,7 +48,5 @@ object NetworkModule {
         return builder.build()
     }
 
-
-
     private const val BASE_URL = "https://api.nasa.gov/neo/rest/v1/"
 }

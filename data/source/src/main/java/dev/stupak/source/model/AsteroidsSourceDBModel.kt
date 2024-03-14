@@ -24,6 +24,6 @@ data class AsteroidsSourceDBModel(
     val missDistanceLunar: String,
     val missDistanceKm: String,
     val missDistanceMiles: String,
-    val orbitingBody:String,
-    val isSentryObject: Boolean
+    val orbitingBody: String,
+    val isSentryObject: Boolean,
 )

@@ -9,6 +9,8 @@ interface FavouritesDBSource {
 
     suspend fun insertAsteroid(favouritesDBModel: FavouritesDBModel)
 
+    suspend fun updateAsteroid(favouritesDBModel: FavouritesDBModel)
+
     suspend fun getAsteroid(id: String): FavouritesSourceDBModel?
 
     suspend fun deleteAsteroid(id: String)

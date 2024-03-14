@@ -15,7 +15,8 @@
 
     <action
         android:id="@+id/action_global_comparison_flow"
-        app:destination="@id/comparison_flow" />
+        app:destination="@id/comparison_flow"
+        app:enterAnim="@android:anim/fade_in" />
 
     <action
         android:id="@+id/action_global_host_flow"

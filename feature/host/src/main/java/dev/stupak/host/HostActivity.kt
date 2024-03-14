@@ -9,13 +9,20 @@ import dev.stupak.host.databinding.ActivityHostBinding
 import dev.stupak.navigation.navigator.NavigationFlow
 import dev.stupak.platform.base.BaseActivity
 import dev.stupak.worker.AsteroidWorker
+import java.util.Locale
 
 @AndroidEntryPoint
 class HostActivity : BaseActivity(R.layout.activity_host) {
     private val binding by viewBinding(ActivityHostBinding::bind)
 
     override fun configureUi() {
+
         initializeNavController()
+
+        val locale = Locale("en", "US")
+        Locale.setDefault(locale)
+        resources.configuration.setLocale(locale)
+
         WorkManager.getInstance(applicationContext).enqueueUniquePeriodicWork(
             "MyWork",
             ExistingPeriodicWorkPolicy.UPDATE,

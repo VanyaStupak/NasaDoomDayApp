@@ -11,13 +11,10 @@ import dev.stupak.navigation.navigator.NavigationFlow
 import dev.stupak.navigation.navigator.Navigator
 import dev.stupak.navigation.navigator.ToFlowNavigable
 import dev.stupak.platform.receiver.MyBroadcastReceiver
-import java.util.Locale
-
 
 abstract class BaseActivity(
     @LayoutRes layout: Int,
 ) : AppCompatActivity(layout), ToFlowNavigable {
-
     private val networkStateReceiver = MyBroadcastReceiver()
     val navigator: Navigator = Navigator()
 
@@ -37,7 +34,7 @@ abstract class BaseActivity(
         flow: NavigationFlow?,
         clearBackStackEntry: Boolean,
         deeplink: String?,
-        argument: String?
+        argument: String?,
     ) {
         try {
             navigator.navigateToFlow(flow, clearBackStackEntry, deeplink)
@@ -45,6 +42,7 @@ abstract class BaseActivity(
             ex.printStackTrace()
         }
     }
+
     fun isFirstRun(): Boolean {
         val sharedPreferences = getPreferences(Context.MODE_PRIVATE)
         return sharedPreferences.getBoolean(IS_FIRST_RUN, true)
@@ -57,7 +55,7 @@ abstract class BaseActivity(
 
     protected open fun configureUi() = Unit
 
-    companion object{
+    companion object {
         private const val IS_FIRST_RUN = "isFirstRun"
     }
 }

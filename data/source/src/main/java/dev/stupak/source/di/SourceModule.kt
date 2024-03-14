@@ -14,6 +14,7 @@ import dev.stupak.source.impl.AsteroidsDBSourceImpl
 import dev.stupak.source.impl.AsteroidsNetSourceImpl
 import dev.stupak.source.impl.FavouritesDBSourceImpl
 import javax.inject.Singleton
+
 @Module
 @InstallIn(SingletonComponent::class)
 object SourceModule {
@@ -25,7 +26,7 @@ object SourceModule {
 
     @Provides
     @Singleton
-    fun provideAsteroidsDBSource(asteroidsDao:AsteroidsDao): AsteroidsDBSource {
+    fun provideAsteroidsDBSource(asteroidsDao: AsteroidsDao): AsteroidsDBSource {
         return AsteroidsDBSourceImpl(asteroidsDao)
     }
 
@@ -34,5 +35,4 @@ object SourceModule {
     fun provideFavouritesDBSource(favouritesDao: FavouritesDao): FavouritesDBSource {
         return FavouritesDBSourceImpl(favouritesDao)
     }
-
 }
