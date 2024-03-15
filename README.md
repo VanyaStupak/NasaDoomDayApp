@@ -47,6 +47,6 @@ and response.
 - Jetpack Hilt;
 - Gradle Kotlin DSL.
 ## 🔩 Arch information
-- MVVM/MVI;
+- MVVM;
 - single Activity;
 - multi modular + clean architecture.
